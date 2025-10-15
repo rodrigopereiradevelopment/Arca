@@ -64,5 +64,20 @@ document.addEventListener('DOMContentLoaded', () => {
     if (sideMenu.classList.contains('active') && !sideMenu.contains(e.target) && e.target !== menuBtn) {
       sideMenu.classList.remove('active');
     }
-  });
+  }); 
+  // Carrossel automático (corrigido)
+const carrosseis = document.querySelectorAll('.banner-carrossel');
+
+carrosseis.forEach((banners) => {
+  setInterval(() => {
+    banners.scrollBy({ left: 200, behavior: 'smooth' });
+
+    // Rolagem circular (opcional)
+    if (banners.scrollLeft + banners.clientWidth >= banners.scrollWidth) {
+      banners.scrollTo({ left: 0, behavior: 'smooth' });
+    }
+  }, 4000);
+});
+
+  
   

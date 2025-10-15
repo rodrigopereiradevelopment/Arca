@@ -82,6 +82,56 @@ header {
 .side-menu.active {
   transform: translateX(0);
 }
+/* remove qualquer fundo/brilho branco do botão X */
+.close-btn {
+  background: transparent;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  padding: 8px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 1001;
+}
+
+/* a imagem dentro do botão */
+.close-btn img {
+  width: 20px;
+  height: 20px;
+  background: transparent;
+  border-radius: 50%;
+  box-shadow: none;
+  display: block;
+}
+
+/* garantir que o botão e a imagem não criem um quadrado branco */
+.close-btn,
+.close-btn img,
+.side-btn {
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+
+.side-btn{
+      width: 30px;
+    height: 30px;
+    display: block;
+    background: transparent;
+    border: none;
+    outline: none;
+    background-color: transparent;
+
+
+}
+.menu-profile {
+  border-bottom: 1px solid #000;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+  margin-top: 50px; /* 👈 adiciona espaço abaixo do X */
+}
 
 
 .search-bar {
@@ -109,10 +159,33 @@ header {
   padding: 8px;
 }
 .menu-profile {
-    border-bottom: 1px solid #000;
-    padding-bottom: 15px;
-    margin-bottom: 15px;
+  display: flex; /* coloca imagem e texto lado a lado */
+  align-items: center; /* alinha verticalmente */
+  gap: 10px; /* espaçamento entre ícone e texto */
+  border-bottom: 1px solid #000;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+  margin-top: 60px; /* mantém espaço abaixo do botão X */
 }
+
+/* a imagem do usuário */
+.menu-profile img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+/* texto do nome e e-mail */
+.menu-profile strong {
+  font-size: 1.1em;
+  display: block;
+}
+
+.menu-profile .email {
+  font-size: 0.9em;
+  color: #333;
+}
+
 
 .menu-list {
   list-style: none;
@@ -166,6 +239,21 @@ header {
 
 .main {
   min-height: 60vh;
+}
+/* Carrossel de banners */
+.banner-carrossel {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  gap: 10px;
+  padding: 10px;
+}
+
+.banner-carrossel img {
+  height: 180px;
+  border-radius: 12px;
+  scroll-snap-align: center;
 }
 
 footer {
