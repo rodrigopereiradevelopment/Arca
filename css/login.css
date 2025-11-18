@@ -2,9 +2,11 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
+    /* Remove 'height: 100vh;' e 'overflow: hidden;' para permitir rolagem se o conteúdo for grande */
     background: #ffffff;
-    height: 100vh;
-    overflow: hidden; /* impede scroll quando vira a tela */
+    min-height: 100vh;
+    display: flex; /* Usamos flexbox no body para melhor organização mobile */
+    flex-direction: column;
 }
 
 /* CABEÇALHO FIXO */
@@ -15,7 +17,7 @@ body {
 
     width: 100%;
     height: 120px;
-
+    
     background: #39e6c2;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
@@ -23,6 +25,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 100; /* Garante que fique acima de outros elementos */
 }
 
 .logo {
@@ -31,6 +34,8 @@ body {
     padding: 1px;
     background: rgba(255,255,255,0.3);
     border-radius: 20px;
+    /* Ajuste para que a logo pareça mais centralizada verticalmente */
+    margin-top: 15px; 
 }
 
 /* RODAPÉ FIXO */
@@ -45,101 +50,132 @@ body {
     background: #39e6c2;
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
+    z-index: 100;
 }
 
 /* ÁREA CENTRAL ENTRE TOPO E RODAPÉ */
 .area-central {
-    position: absolute;
-    top: 70px;       /* altura do topo */
-    bottom: 70px;     /* altura do rodapé */
-    left: 0;
-    right: 0;
-
+    /* Mude para padding top/bottom para considerar os elementos fixos */
+    padding-top: 130px; /* 120px do topo + 10px de margem */
+    padding-bottom: 90px; /* 80px do rodapé + 10px de margem */
+    padding-left: 20px;
+    padding-right: 20px;
+    
+    /* Remove position: absolute e alinhamento, deixa o fluxo normal */
     display: flex;
-    justify-content: center;
-    align-items: center;
-
-    padding: 20px;
-    overflow-y: auto; /* se faltar espaço quando virar a tela */
+    flex-direction: column;
+    align-items: center; /* Centraliza o card horizontalmente */
+    
+    flex-grow: 1; /* Permite que ocupe o espaço entre topo e rodapé */
+    
+    /* Adiciona margem top/bottom de 0 e margens laterais automáticas */
+    margin: 0 auto; 
+    
+    /* Opcional: Adiciona espaçamento vertical para telas pequenas */
+    justify-content: center; 
 }
 
 /* CARD LOGIN */
 .card-login {
-    width: 85%;
-    height: flex;
-    background: #39e6c2;
-    padding: 20px;
+    width: 100%; /* Ocupa a largura do padding da área central */
+    max-width: 400px; /* Limita a largura máxima para telas maiores */
+    
+    background: #39e6c2; /* Fundo branco para contrastar com a cor do topo/rodapé */
+    padding: 30px; /* Aumenta o padding interno */
     border-radius: 20px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-
+    box-shadow: 0 8px 15px rgba(0,0,0,0.2); /* Sombra mais destacada */
+    
+    /* Centraliza o card na área central verticalmente */
+    align-self: center; 
 }
 
+/* TÍTULOS E LABELS */
 label {
     font-weight: bold;
-    margin-left: 5px;
-}
-
-input {
-    width: 95%;
-    padding: 12px;
-    border: none;
-    border-radius: 15px;
-    margin: 8px 0;
-    box-shadow: inset 0 3px 8px rgba(0,0,0,0.15);
-    outline: none;
-}
-
-.cadastro {
-    display: block;
-    text-align: center;
-    margin: 10px 0;
-    font-size: 14px;
+    margin-left: 0; /* Remove margem desnecessária */
     color: #333;
-    text-decoration: none;
+    display: block; /* Garante que ocupe sua própria linha */
+    margin-bottom: 5px;
 }
 
-.btn-entrar {
-    width: 90%;
-    background: rgba(0,0,0,0.15);
-    border: none;
-    padding: 12px;
+/* CAMPOS DE INPUT */
+input {
+    width: 100%; /* Garante que ocupe 100% do card, o padding já está dentro */
+    padding: 15px; /* Aumenta o padding para melhor toque */
+    border: 1px solid #ccc;
     border-radius: 15px;
-    margin: 10px 0 20px 0;
-    font-size: 16px;
-    font-weight: bold;
+    margin: 0 0 20px 0; /* Ajusta a margem inferior */
+    box-shadow: none; /* Remove a sombra interna para um visual mais limpo */
+    outline: none;
+    background-color: #19d1ac; /* Fundo levemente cinza */
+    box-sizing: border-box; /* Inclui padding e borda na largura total */
 }
 
+/* LINK CADASTRO */
+.cadastro {
+    text-align: right; /* Alinha o link de cadastro à direita, padrão em logins */
+    margin: -10px 0 25px 0; /* Ajusta a margem para baixo e move para cima */
+    font-size: 15px;
+    color: #6B8E23; /* Usa a cor do tema para o link */
+    font-weight: bold;
+    text-decoration: none;
+    display: block;
+}
+
+/* BOTÃO ENTRAR */
+.btn-entrar {
+    width: 100%;
+    background: #19d1ac; /* Usa a cor primária do tema */
+    color: black; /* Cor branca para contraste */
+    border: none;
+    padding: 15px;
+    border-radius: 15px;
+    margin: 10px 0 30px 0;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-entrar:hover {
+    background: #19d1ac;
+}
+
+/* BOTÕES SOCIAIS */
 .social-box {
     display: flex;
     justify-content: space-between;
-    gap: 10px;
+    gap: 15px; /* Aumenta o espaçamento */
 }
 
 .btn-social {
     flex: 1;
-    padding: 12px;
+    padding: 15px; /* Aumenta o padding */
     border: none;
     border-radius: 15px;
     display: flex;
     align-items: center;
-    gap: 8px;
-    font-size: 15px;
+    gap: 10px;
+    font-size: 16px;
+    font-weight: bold;
     justify-content: center;
+    cursor: pointer;
 }
 
 .facebook {
-    background: #3b5998;
+    background: #19d1ac;
     color: white;
 }
 
 .google {
-    background: #ffffff;
-    color: black;
-    border: 1px solid #ccc;
+    background: #19d1ac;
+    color: #ffffff;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .btn-social img {
-    width: 30px;
-    background: none;
-    border: none;
+    width: 20px; /* Ajusta o tamanho do ícone */
+    height: 20px;
+    object-fit: contain;
 }
