@@ -31,14 +31,15 @@ body {
 .logo {
     width: 100px;
     height: 100px;
-    padding: 1px;
-    background: rgba(255,255,255,0.3);
-    border-radius: 20px;
+    padding: 0px;
+     border-radius: 22px;
+     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
     /* Ajuste para que a logo pareça mais centralizada verticalmente */
-    margin-top: 15px; 
+    margin: 15px; 
+    
 }
 
-/* RODAPÉ FIXO */
+/* RODAPÉ FIXO */ 
 .footer {
     position: fixed;
     bottom: 0;
@@ -48,8 +49,6 @@ body {
     height: 80px;
 
     background: #39e6c2;
-    border-top-left-radius: 25px;
-    border-top-right-radius: 25px;
     z-index: 100;
 }
 
