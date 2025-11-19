@@ -178,3 +178,115 @@ input {
     height: 36px;
     object-fit: contain;
 }
+/* 📱 CELULAR (até 480px) */
+@media (max-width: 480px) {
+
+    .topo {
+        height: 90px;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    .logo {
+        width: 70px;
+        height: 70px;
+        margin: 5px;
+    }
+
+    .footer {
+        height: 70px;
+    }
+
+    .area-central {
+        padding-top: 100px;
+        padding-bottom: 80px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .card-login {
+        padding: 20px;
+        border-radius: 15px;
+        max-width: 330px;
+    }
+
+    input {
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    .btn-entrar {
+        padding: 12px;
+        font-size: 16px;
+    }
+
+    .btn-social {
+        padding: 12px;
+        font-size: 18px;
+    }
+
+    .btn-social img {
+        width: 28px;
+        height: 28px;
+    }
+}
+/* 📲 TABLET */
+@media (min-width: 481px) and (max-width: 768px) {
+
+    .topo {
+        height: 110px;
+    }
+
+    .logo {
+        width: 90px;
+        height: 90px;
+    }
+
+    .footer {
+        height: 80px;
+    }
+
+    .area-central {
+        padding-top: 120px;
+        padding-bottom: 90px;
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+    .card-login {
+        max-width: 450px;
+        padding: 25px;
+    }
+
+    input {
+        padding: 14px;
+        font-size: 16px;
+    }
+
+    .btn-entrar {
+        padding: 14px;
+        font-size: 17px;
+    }
+
+    .btn-social {
+        padding: 14px;
+        font-size: 20px;
+    }
+
+    .btn-social img {
+        width: 32px;
+        height: 32px;
+    }
+}
+/* 🖥️ TABLET GRANDE */
+@media (min-width: 769px) and (max-width: 1024px) {
+
+    .card-login {
+        max-width: 500px;
+        padding: 28px;
+    }
+
+    .btn-social {
+        font-size: 22px;
+    }
+}

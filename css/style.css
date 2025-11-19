@@ -225,17 +225,6 @@ header {
   font-size: 1.5em;
 }
 
-@media (max-width: 600px) {
-  .menu-list a {
-    padding: 12px 8px;
-    font-size: 1em;
-  }
-  .menu-list img {
-    width: 24px;
-    height: 24px;
-    margin-right: 10px;
-  }
-}
 .menu-list {
   max-height: calc(100vh - 250px); /* ajusta conforme o tamanho do perfil + sair */
   overflow-y: auto;
@@ -351,4 +340,163 @@ footer {
 
 .modal-content-carrinho {
   padding: 20px;
+}
+/* 📱 CELULAR — até 480px */
+@media (max-width: 480px) {
+  
+  header,
+  .cabecalho {
+    padding: 6px 10px;
+  }
+  
+  .menu-btn {
+    font-size: 1.4em;
+  }
+  
+  .search-bar {
+    max-width: 65%;
+    border-radius: 15px;
+  }
+  
+  .search-bar input {
+    padding: 6px;
+    font-size: 14px;
+  }
+  
+  /* MENU LATERAL */
+  .side-menu {
+    width: 75vw;
+  }
+  
+  .menu-profile {
+    margin-top: 50px;
+  }
+  
+  .menu-profile img {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .menu-profile strong {
+    font-size: 1em;
+  }
+  
+  .menu-profile .email {
+    font-size: 0.85em;
+  }
+  
+  .menu-list a {
+    padding: 10px 8px;
+    font-size: 1em;
+  }
+  
+  .menu-list img {
+    width: 22px;
+    height: 22px;
+  }
+  
+  /* BANNERS */
+  .banner-carrossel img {
+    height: 180px;
+  }
+  
+  /* RODAPÉ */
+  footer {
+    padding: 8px 0;
+  }
+  
+  .cart-btn {
+    width: 75px;
+    height: 75px;
+    margin-top: -55px;
+  }
+  
+  .btn-icon {
+    width: 38px;
+    height: 38px;
+  }
+  
+  /* MODAL CARRINHO */
+  .modal-carrinho {
+    height: 92vh;
+  }
+  
+}
+/* 📲 TABLET — entre 481px e 768px */
+@media (min-width: 481px) and (max-width: 768px) {
+  
+  header,
+  .cabecalho {
+    padding: 12px 18px;
+  }
+  
+  .menu-btn {
+    font-size: 1.6em;
+  }
+  
+  .search-bar {
+    max-width: 75%;
+    border-radius: 18px;
+  }
+  
+  .search-bar input {
+    padding: 10px;
+    font-size: 16px;
+  }
+  
+  /* MENU */
+  .side-menu {
+    width: 50vw;
+  }
+  
+  .menu-profile img {
+    width: 45px;
+    height: 45px;
+  }
+  
+  .menu-list a {
+    font-size: 1.15em;
+    padding: 12px 10px;
+  }
+  
+  /* BANNERS */
+  .banner-carrossel img {
+    height: 230px;
+  }
+  
+  /* RODAPÉ */
+  .cart-btn {
+    width: 90px;
+    height: 90px;
+    margin-top: -65px;
+  }
+  
+  .btn-icon {
+    width: 48px;
+    height: 48px;
+  }
+  
+}
+/* 🖥️ TABLET GRANDE — 769px até 1024px */
+@media (min-width: 769px) and (max-width: 1024px) {
+
+  .side-menu {
+    width: 40vw;
+  }
+
+  .banner-carrossel img {
+    height: 260px;
+  }
+
+  .cart-btn {
+    width: 100px;
+    height: 100px;
+    margin-top: -70px;
+  }
+
+  .btn-icon {
+    width: 55px;
+    height: 55px;
+  }
+
 }
