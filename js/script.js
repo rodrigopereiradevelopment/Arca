@@ -156,7 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
   if (btnComparar) {
     btnComparar.addEventListener("click", () => {
-      window.location.href = "comparar.html";
+      window.location.href = "compararprecos.html";
     });
   }
 });

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comparar Preços</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    
+    <main id="main-content">
+        
+         <header class="cabecalho">
+      <button class="menu-btn">&#9776;</button>
+      
+      <!-- Menu lateral -->
+      <div class="side-menu" id="sideMenu">
+        <button class="close-btn" id="closeMenuBtn"><img src="../img/close.png" alt="Close"></button>
+        <div class="menu-profile">
+          <img src="../img/usuario.png" alt="Usuário" class="profile-icon">
+          <div class="user-info">
+            <strong>Nome do Usuário</strong>
+            <span class="email">email@exemplo.com</span>
+          </div>
+        </div>
+        
+        
+        <ul class="menu-list">
+          <li>
+            <a href="index.html">
+              <img src="../img/inicio.png" alt="Início">
+              <span>Início</span>
+            </a>
+          </li>
+          <li><a href="pesquisar_produtos.html"><img src="../img/lupa1.png" alt="pesquisar produtos"><span>Pesquisar Produtos</span></a></li>
+          <li><a href="mercados_proximos.html"><img src="../img/mercado.png" alt="mercados proximos"><span>Mercados Proximos</span></a></li>
+          <li><a href="comparar_precos.html"><img src="../img/comparar.png" alt="compara precos"><span>Comparar Preços</span></a></li>
+          <li><a href="meu_carrinho.html"><img src="../img/car.png" alt="meu carrinho"><span>Meu Carrinho</span></a></li>
+          <li><a href="historico.html"><img src="../img/historico.png" alt="historico"><span>Histórico</span></a></li>
+          <li><a href="configuracoes.html"><img src="../img/configuracao.png" alt="configuracoes"><span>Configurações</span></a></li>
+          <li><a href="cadastrarmercado.html"><img src="../img/cadastrarmercados.png" alt="configuracoes"><span>Cadastrar Mercado</span></a></li>
+          <li><a href="ajuda_e_suporte.html"><img src="../img/ajuda.png" alt="ajuda e suporte"><span>Ajuda e Suporte</span></a></li>
+        </ul>
+        
+        <div class="menu-exit" id="logoutBtn">
+  <img src="../img/sair.png" alt="sair">
+  <span>Sair</span>
+</div>
+      </div>
+      
+      <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Categoria / Produto" autocomplete="off">
+        <button class="search-btn">&#128269;</button>
+      </div>
+          <!-- Container de sugestões-->
+      <div class="suggestions-container" id="suggestionsContainer">
+  <div class="suggestions-header"></div>
+  <div id="suggestionsList"></div>
+</div>
+    </header>
+
+        <main>
+            <div class="compararprecos">
+            </div class="precos">
+            <p>Esses São os Melhores Preços de Sua Lista de Compras</p>
+            <p>Comparada Entre os Mercados Cadastrados</p>
+            <h1>Melhores Preços</h1>
+            </div>
+            </div>
+        </main>
+
+
+       <button id="btn-voltar" class="btn-voltar">
+    Voltar
+  </button>
+
+ <a href="imprimir.html" id="btn-comparar" class="btn-comparar">
+  Imprimir
+</a>
+
+    </main>
+    
+    <script src="../js/script.js"></script>
+</body>
+</html>
