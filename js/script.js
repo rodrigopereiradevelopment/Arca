@@ -133,30 +133,5 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }, 4000);
   });
-  
-  // Modal do carrinho
-  const modal = document.getElementById("modal-carrinho");
-  const abrirCarrinho = document.querySelector(".abrir-carrinho");
-  const btnVoltar = document.getElementById("btn-voltar");
-  const btnComparar = document.getElementById("btn-comparar");
-  
-  if (abrirCarrinho && modal) {
-    abrirCarrinho.addEventListener("click", () => {
-      modal.classList.add("mostrar");
-      document.body.style.overflow = "hidden";
-    });
-  }
-  
-  if (btnVoltar && modal) {
-    btnVoltar.addEventListener("click", () => {
-      modal.classList.remove("mostrar");
-      document.body.style.overflow = "auto";
-    });
-  }
-  
-  if (btnComparar) {
-    btnComparar.addEventListener("click", () => {
-      window.location.href = "compararprecos.html";
-    });
-  }
-});
+}
+)
