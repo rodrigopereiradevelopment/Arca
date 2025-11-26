@@ -412,7 +412,8 @@ cursor: pointer;
 
 /* botões */
 .btn-voltar,
-.btn-comparar {
+.btn-comparar,
+.btn-rota {
   flex: 1;
   padding: 12px;
   border-radius: 25px;
@@ -423,7 +424,166 @@ cursor: pointer;
 }
 
 .btn-voltar { background: #eee; color: #333; }
-.btn-comparar { background: #00D6A0; color: #fff; font-weight:700; }
+.btn-comparar { background: #00D6A0; color: #fff;}
+.btn-rota {background: chartreuse; color:#333 ; font-weight:600; }
 
 /* pequena melhoria: sombra/elevação quando lista rola abaixo do footer */
 .carrinho-lista::-webkit-scrollbar { width: 6px; }
+
+/* 📱 CELULAR (até 480px) */
+@media (max-width: 480px) {
+  /* CABEÇALHO/HEADER */
+  .cabecalho {
+      padding: 8px 10px;
+  }
+
+  .menu-btn {
+      font-size: 1.5em; /* Ícone do menu um pouco menor */
+      margin-right: 5px;
+  }
+
+  /* BARRA DE BUSCA */
+  .search-bar {
+      max-width: 65%; /* Ocupa um pouco menos de espaço no header */
+  }
+
+  .search-bar input {
+      padding: 6px;
+  }
+
+  .search-btn {
+      font-size: 1.1em;
+      padding: 6px;
+  }
+
+  /* MENU LATERAL */
+  .side-menu {
+      width: 75vw; /* Menu mais estreito */
+  }
+
+  .close-btn img {
+      width: 18px;
+      height: 18px;
+  }
+  
+  .menu-profile {
+      margin-top: 50px;
+  }
+
+  .menu-profile img {
+      width: 35px;
+      height: 35px;
+  }
+
+  .menu-profile strong {
+      font-size: 1em;
+  }
+
+  .menu-list a {
+      padding: 8px 10px;
+      font-size: 1em;
+  }
+
+  .menu-list img {
+      width: 24px;
+      height: 24px;
+      margin-right: 12px;
+  }
+  
+  .menu-exit {
+      font-size: 1.5em;
+      padding: 10px;
+  }
+
+  /* MODAL CARRINHO */
+  .modal-carrinho {
+      height: 95vh; /* Ocupa mais tela no celular */
+  }
+
+  .modal-content-carrinho {
+      padding: 15px;
+  }
+
+  /* BOTÕES DO CARRINHO */
+  .btn-voltar,
+  .btn-comparar,
+  .btn-rota {
+      padding: 10px;
+      font-size: 14px;
+      border-radius: 20px;
+  }
+}
+
+---
+
+/* 📲 TABLET (481px a 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+  /* CABEÇALHO/HEADER */
+  .cabecalho {
+      padding: 10px 20px;
+  }
+
+  .menu-btn {
+      font-size: 1.6em;
+      margin-right: 8px;
+  }
+
+  /* BARRA DE BUSCA */
+  .search-bar {
+      max-width: 60%;
+  }
+
+  .search-bar input {
+      padding: 8px;
+  }
+
+  .search-btn {
+      font-size: 1.2em;
+  }
+
+  /* MENU LATERAL */
+  .side-menu {
+      width: 50vw; /* Mais largo que no celular, mais estreito que no desktop */
+  }
+  
+  .menu-profile {
+      margin-top: 60px;
+  }
+
+  .menu-list a {
+      font-size: 1.05em;
+  }
+  
+  /* MODAL CARRINHO */
+  .modal-carrinho {
+      height: 85vh; /* Altura padrão ou um pouco menos */
+  }
+
+  /* BOTÕES DO CARRINHO */
+  .btn-voltar,
+  .btn-comparar,
+  .btn-rota {
+      padding: 11px;
+      font-size: 15px;
+  }
+}
+
+---
+
+/* 🖥️ TABLET GRANDE (769px a 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  /* BARRA DE BUSCA */
+  .search-bar {
+      max-width: 50%; /* Ocupa menos espaço para não apertar demais no header */
+  }
+  
+  /* MENU LATERAL */
+  .side-menu {
+      width: 40vw;
+  }
+
+  /* MODAL CARRINHO */
+  .modal-carrinho {
+      height: 80vh; 
+  }
+}
