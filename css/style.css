@@ -1,4 +1,4 @@
-body {
+Body {
   margin: 0;
   font-family: Arial, sans-serif;
   background: #fff;
@@ -413,26 +413,7 @@ footer {
     height: 50px;
     display: block;
 }
-.modal-carrinho {
-  position: fixed;
-  left: 0;
-  bottom: -100%;
-  width: 100%;
-  height: 90vh;
-  background: #fff;
-  border-radius: 25px 25px 0 0;
-  box-shadow: 0 -5px 20px rgba(0,0,0,0.2);
-  transition: bottom .3s ease;
-  z-index: 1000;
-}
 
-.modal-carrinho.mostrar {
-  bottom: 0;
-}
-
-.modal-content-carrinho {
-  padding: 20px;
-}
 /* 📱 CELULAR — até 480px */
 @media (max-width: 480px) {
   
@@ -509,9 +490,7 @@ footer {
   }
   
   /* MODAL CARRINHO */
-  .modal-carrinho {
-    height: 92vh;
-  }
+  /* As regras do modal foram removidas aqui */
   
 }
 /* 📲 TABLET — entre 481px e 768px */
@@ -592,88 +571,3 @@ footer {
   }
 
 }
-/* --- Modal: layout flex (botões presos ao fundo do modal) --- */
-.modal-carrinho {
-  position: fixed;
-  left: 0;
-  bottom: -100%;
-  width: 100%;
-  height: 90vh;              /* altura do modal */
-  background: #fff;
-  border-radius: 25px 25px 0 0;
-  box-shadow: 0 -5px 20px rgba(0,0,0,0.2);
-  transition: bottom .3s ease;
-  z-index: 1000;
-  display: flex;
-  justify-content: center;   /* centra o conteúdo interno */
-}
-
-.modal-carrinho.mostrar {
-  bottom: 0;
-}
-
-/* O conteúdo interno ocupa toda a altura disponível */
-.modal-content-carrinho {
-  box-sizing: border-box;
-  width: 100%;
-  max-width: 540px;   /* limita largura em telas grandes */
-  height: 100%;       /* crucial: para que o flex interno funcione */
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-  gap: 16px;
-}
-
-/* A lista cresce e vira scroll independente (sem afetar os botões) */
-.carrinho-lista {
-  flex: 1 1 auto;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-  padding-right: 8px; /* evita que scrollbar cubra conteúdo */
-}
-
-/* item do carrinho */
-.carrinho-item {
-  display: flex;
-  align-items: center;
-  padding: 12px;
-  gap: 12px;
-  padding-bottom: 12px;
-  border-bottom: 1px solid #ddd;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-}
-
-/* FOOTER DOS BOTÕES — sem fixed, ocupa o final do modal */
-.modal-buttons {
-  flex: 0 0 auto; /* não cresce */
-  display: flex;
-  gap: 12px;
-  justify-content: space-between;
-  align-items: center;
-  padding: 12px 0;
-  border-top: 1px solid #eee;
-  background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,1));
-  /* se quiser que fiquem sempre visíveis mesmo durante scroll,
-     mantém como está porque .carrinho-lista é quem rola */
-}
-
-/* botões */
-.btn-voltar,
-.btn-comparar {
-  flex: 1;
-  padding: 12px;
-  border-radius: 25px;
-  border: none;
-  font-size: 16px;
-  cursor: pointer; 
-   box-shadow: 0 8px 15px rgba(0,0,0,0.4); /* Sombra mais destacada */
-}
-
-.btn-voltar { background: #eee; color: #333; }
-.btn-comparar { background: #00D6A0; color: #fff; font-weight:700; }
-
-/* pequena melhoria: sombra/elevação quando lista rola abaixo do footer */
-.carrinho-lista::-webkit-scrollbar { width: 6px; }
