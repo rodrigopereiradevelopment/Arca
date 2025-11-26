@@ -1,0 +1,679 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #fff;
+}
+
+/* Tela de introdução */
+#intro-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--fundo-pagina);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  transition: opacity 1s ease-out;
+}
+
+#intro-overlay img {
+  width: 80%;
+  max-width: 400px;
+  height: auto;
+  object-fit: contain;
+  transition: opacity 1s ease-in-out;
+}
+
+header {
+  background: #22dbcf;
+  display: flex;
+  align-items: center;
+  padding: 8px;
+}
+/* Conteúdo principal */
+#main-content {
+  opacity: 0;
+  transition: opacity 1s ease-in;
+  padding: 100px 10px 80px;
+}
+
+#main-content.visible {
+  opacity: 1;
+}
+.menu-btn {
+  background: none;
+  border: none;
+  color: #000;
+  font-size: 1.7em;
+  margin-right: 9px;
+}
+/* Header fixo */
+.cabecalho {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 10px 16px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  box-shadow: var(--sombra);
+}
+
+.side-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 60vw;
+  background-color: #00E3BD;
+  /* cor do menu na imagem */
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  z-index: 999;
+}
+
+.side-menu.active {
+  transform: translateX(0);
+}
+/* remove qualquer fundo/brilho branco do botão X */
+.close-btn {
+  background: transparent;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  padding: 8px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 1001;
+}
+
+/* a imagem dentro do botão */
+.close-btn img {
+  width: 20px;
+  height: 20px;
+  background: transparent;
+  border-radius: 50%;
+  box-shadow: none;
+  display: block;
+}
+
+/* garantir que o botão e a imagem não criem um quadrado branco */
+.close-btn,
+.close-btn img,
+.side-btn {
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+
+.side-btn{
+      width: 30px;
+    height: 30px;
+    display: block;
+    background: transparent;
+    border: none;
+    outline: none;
+    background-color: transparent;
+
+
+}
+.menu-profile {
+  border-bottom: 1px solid #000;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+  margin-top: 50px; /* 👈 adiciona espaço abaixo do X */
+}
+
+
+.search-bar {
+  flex: 1;
+  display: flex;
+  background: #fff;
+  border-radius: 20px;
+  align-items: center;
+  overflow: hidden;
+  max-width: 70%;
+}
+
+.search-bar input {
+  border: none;
+  outline: none;
+  padding: 8px;
+  width: 100%;
+}
+
+.search-btn {
+  border: none;
+  background: none;
+  color: #22dbcf;
+  font-size: 1.3em;
+  padding: 8px;
+}
+
+/* Torne o container pai relativo */
+.search-bar {
+    position: relative;
+}
+
+.suggestions-container {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.40);
+    margin-top: 5px;
+    display: none;
+    z-index: 1000;
+}
+
+.suggestions-container.show {
+    display: block;
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.suggestions-header {
+    padding: 10px 15px;
+    background: #f5f5f5;
+    border-bottom: 1px solid #e0e0e0;
+    font-size: 11px;
+    font-weight: 600;
+    color: #666;
+    text-transform: uppercase;
+}
+
+.suggestion-item {
+    padding: 12px 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: background 0.2s;
+    border-bottom: 1px solid #f0f0f0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.40);
+}
+
+.suggestion-item:last-child {
+    border-bottom: none;
+}
+
+.suggestion-item:hover {
+    background: #f5f5f5;
+}
+
+.suggestion-icon {
+    color: #999;
+    font-size: 16px;
+}
+
+.suggestion-content {
+    flex: 1;
+}
+
+.suggestion-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+}
+
+.suggestion-category {
+    font-size: 11px;
+    color: #999;
+    margin-top: 2px;
+}
+.suggestion-img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.menu-profile {
+  display: flex; /* coloca imagem e texto lado a lado */
+  align-items: center; /* alinha verticalmente */
+  gap: 10px; /* espaçamento entre ícone e texto */
+  border-bottom: 1px solid #000;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+  margin-top: 60px; /* mantém espaço abaixo do botão X */
+}
+
+/* a imagem do usuário */
+.menu-profile img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+/* texto do nome e e-mail */
+.menu-profile strong {
+  font-size: 1.1em;
+  display: block;
+}
+
+.menu-profile .email {
+  font-size: 0.9em;
+  color: #333;
+}
+
+
+.menu-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu-list li {
+  margin: 8px 0;
+}
+
+.menu-list a {
+  display: flex;
+  align-items: center;
+  padding: 10px 12px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #333;
+  transition: background 0.2s;
+  font-size: 1.12em;
+}
+
+.menu-list a:hover {
+  background: rgba(0,0,0,0.07);
+}
+
+.menu-list img {
+  width: 28px;
+  height: 28px;
+  overflow: hidden;
+  object-fit: cover;
+  border-radius: 10%;     /* arredonda as imagens */
+  margin-right: 16px;     /* espaço entre imagem e texto */
+}
+
+.menu-list span {
+  font-size: 1.5em;
+}
+
+.menu-list {
+  max-height: calc(100vh - 250px); /* ajusta conforme o tamanho do perfil + sair */
+  overflow-y: auto;
+  padding-right: 5px;
+}
+
+.menu-list::-webkit-scrollbar {
+  width: 6px;
+}
+.menu-list::-webkit-scrollbar-thumb {
+  background-color: #22dbcf;
+  border-radius: 10px;
+}
+
+/* Fixar o perfil e o botão sair */
+.menu-profile {
+  position: sticky;
+  top: 50px; /* abaixo do botão X */
+  background: #00E3BD;
+  z-index: 1;
+}
+
+.menu-exit {
+  position: sticky;
+  font-size: 1.8em;
+  bottom: 0;
+  background: #00E3BD;
+  padding: 15px;
+   display: flex;          /* Ativa o Flexbox */
+    align-items: center;    /* Alinha os itens verticalmente ao centro */
+    gap: 10px;              /* Adiciona um pequeno espaço entre a imagem e o texto */
+cursor: pointer; 
+  }
+
+.main {
+  min-height: 60vh;
+}
+/* Carrossel de banners */
+.banner-carrossel {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  gap: 10px;
+  padding: 10px;
+}
+
+.banner-carrossel img {
+  height: 270px;
+  border-radius: 12px;
+  scroll-snap-align: center;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #22dbcf;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 11px 0;
+}
+  /* Para garantir que os links âncora não adicionem estilos visuais no rodapé */
+.footer-link {
+  text-decoration: none;
+}
+
+.cart-btn {
+  background: #fff;
+  border-radius: 50%;
+  width: 94px;
+  height: 94px;
+  color: #22dbcf;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2em;
+  border: 2px solid #22dbcf;
+  margin-top: -70px;
+  box-shadow: 0 2px 10px #22dbcf33;
+}
+
+.footer-btn {
+    border: none;
+    background: none;
+    padding: 8px;
+    cursor: pointer;
+}
+
+.btn-icon {
+    width: 50px;
+    height: 50px;
+    display: block;
+}
+.modal-carrinho {
+  position: fixed;
+  left: 0;
+  bottom: -100%;
+  width: 100%;
+  height: 90vh;
+  background: #fff;
+  border-radius: 25px 25px 0 0;
+  box-shadow: 0 -5px 20px rgba(0,0,0,0.2);
+  transition: bottom .3s ease;
+  z-index: 1000;
+}
+
+.modal-carrinho.mostrar {
+  bottom: 0;
+}
+
+.modal-content-carrinho {
+  padding: 20px;
+}
+/* 📱 CELULAR — até 480px */
+@media (max-width: 480px) {
+  
+  header,
+  .cabecalho {
+    padding: 6px 10px;
+  }
+  
+  .menu-btn {
+    font-size: 1.4em;
+  }
+  
+  .search-bar {
+    max-width: 65%;
+    border-radius: 15px;
+  }
+  
+  .search-bar input {
+    padding: 6px;
+    font-size: 14px;
+  }
+  
+  /* MENU LATERAL */
+  .side-menu {
+    width: 75vw;
+  }
+  
+  .menu-profile {
+    margin-top: 50px;
+  }
+  
+  .menu-profile img {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .menu-profile strong {
+    font-size: 1em;
+  }
+  
+  .menu-profile .email {
+    font-size: 0.85em;
+  }
+  
+  .menu-list a {
+    padding: 10px 8px;
+    font-size: 1em;
+  }
+  
+  .menu-list img {
+    width: 22px;
+    height: 22px;
+  }
+  
+  /* BANNERS */
+  .banner-carrossel img {
+    height: 180px;
+  }
+  
+  /* RODAPÉ */
+  footer {
+    padding: 8px 0;
+  }
+  
+  .cart-btn {
+    width: 75px;
+    height: 75px;
+    margin-top: -55px;
+  }
+  
+  .btn-icon {
+    width: 38px;
+    height: 38px;
+  }
+  
+  /* MODAL CARRINHO */
+  .modal-carrinho {
+    height: 92vh;
+  }
+  
+}
+/* 📲 TABLET — entre 481px e 768px */
+@media (min-width: 481px) and (max-width: 768px) {
+  
+  header,
+  .cabecalho {
+    padding: 12px 18px;
+  }
+  
+  .menu-btn {
+    font-size: 1.6em;
+  }
+  
+  .search-bar {
+    max-width: 75%;
+    border-radius: 18px;
+  }
+  
+  .search-bar input {
+    padding: 10px;
+    font-size: 16px;
+  }
+  
+  /* MENU */
+  .side-menu {
+    width: 50vw;
+  }
+  
+  .menu-profile img {
+    width: 45px;
+    height: 45px;
+  }
+  
+  .menu-list a {
+    font-size: 1.15em;
+    padding: 12px 10px;
+  }
+  
+  /* BANNERS */
+  .banner-carrossel img {
+    height: 230px;
+  }
+  
+  /* RODAPÉ */
+  .cart-btn {
+    width: 90px;
+    height: 90px;
+    margin-top: -65px;
+  }
+  
+  .btn-icon {
+    width: 48px;
+    height: 48px;
+  }
+  
+}
+/* 🖥️ TABLET GRANDE — 769px até 1024px */
+@media (min-width: 769px) and (max-width: 1024px) {
+
+  .side-menu {
+    width: 40vw;
+  }
+
+  .banner-carrossel img {
+    height: 260px;
+  }
+
+  .cart-btn {
+    width: 100px;
+    height: 100px;
+    margin-top: -70px;
+  }
+
+  .btn-icon {
+    width: 55px;
+    height: 55px;
+  }
+
+}
+/* --- Modal: layout flex (botões presos ao fundo do modal) --- */
+.modal-carrinho {
+  position: fixed;
+  left: 0;
+  bottom: -100%;
+  width: 100%;
+  height: 90vh;              /* altura do modal */
+  background: #fff;
+  border-radius: 25px 25px 0 0;
+  box-shadow: 0 -5px 20px rgba(0,0,0,0.2);
+  transition: bottom .3s ease;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;   /* centra o conteúdo interno */
+}
+
+.modal-carrinho.mostrar {
+  bottom: 0;
+}
+
+/* O conteúdo interno ocupa toda a altura disponível */
+.modal-content-carrinho {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 540px;   /* limita largura em telas grandes */
+  height: 100%;       /* crucial: para que o flex interno funcione */
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  gap: 16px;
+}
+
+/* A lista cresce e vira scroll independente (sem afetar os botões) */
+.carrinho-lista {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding-right: 8px; /* evita que scrollbar cubra conteúdo */
+}
+
+/* item do carrinho */
+.carrinho-item {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  gap: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* FOOTER DOS BOTÕES — sem fixed, ocupa o final do modal */
+.modal-buttons {
+  flex: 0 0 auto; /* não cresce */
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-top: 1px solid #eee;
+  background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,1));
+  /* se quiser que fiquem sempre visíveis mesmo durante scroll,
+     mantém como está porque .carrinho-lista é quem rola */
+}
+
+/* botões */
+.btn-voltar,
+.btn-comparar {
+  flex: 1;
+  padding: 12px;
+  border-radius: 25px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer; 
+   box-shadow: 0 8px 15px rgba(0,0,0,0.4); /* Sombra mais destacada */
+}
+
+.btn-voltar { background: #eee; color: #333; }
+.btn-comparar { background: #00D6A0; color: #fff; font-weight:700; }
+
+/* pequena melhoria: sombra/elevação quando lista rola abaixo do footer */
+.carrinho-lista::-webkit-scrollbar { width: 6px; }
