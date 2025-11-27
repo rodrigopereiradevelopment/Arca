@@ -1,0 +1,5 @@
+#mapa {
+    /* Define uma altura mínima para o mapa */
+    height: 100vh; /* 100% da altura da janela de visualização */
+    width: 100%;  /* Ocupa toda a largura */
+}
