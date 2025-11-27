@@ -1,5 +1,40 @@
+/* CABEÇALHO FIXO */
+.topo {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 120px; /* <--- Altura do cabeçalho (120px) */
+    
+    background: #39e6c2;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100; 
+}
+
+.logo {
+    width: 100px;
+    height: 100px;
+    padding: 0px;
+     border-radius: 22px;
+     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+    /* Ajuste para que a logo pareça mais centralizada verticalmente */
+    margin: 15px; 
+    
+}
+
+/* CORREÇÃO DO MAPA */
 #mapa {
-    /* Define uma altura mínima para o mapa */
-    height: 100vh; /* 100% da altura da janela de visualização */
-    width: 100%;  /* Ocupa toda a largura */
+    /* ADICIONA MARGEM IGUAL À ALTURA DO CABEÇALHO */
+    margin-top: 120px; 
+    
+    /* REDUZ A ALTURA TOTAL PARA COMPENSAR A MARGEM */
+    height: calc(100vh - 120px); 
+    
+    width: 100%;
 }
