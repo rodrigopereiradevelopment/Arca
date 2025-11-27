@@ -2,6 +2,8 @@
 // 1. DADOS DOS DESTINOS (OS 3 MERCADOS MAIS BARATOS)
 // ESTES DADOS DEVEM VIR DA SUA PÁGINA ANTERIOR
 // =======================================================
+const ORS_API_KEY = "eyJvcmciOiI1YjNjZTM1OTc4NTExMTAwMDFjZjYyNDgiLCJpZCI6ImU5MTkzYWM1ZWJhMTRmNmJiMTY0MDI5NTI3Y2NkODQzIiwiaCI6Im11cm11cjY0In0=";
+
 const mercadosMaisBaratos = [
     { id: 1, nome: "Big Bom", lat: -22.4250, lng: -46.9400, preco: "R$ 102,24" },
     { id: 2, nome: "Supermercado SMC", lat: -22.4350, lng: -46.9550, preco: "R$ 107,68" },
@@ -36,15 +38,22 @@ function iniciarNovaRota(origem, destino, nomeDestino) {
         map.removeControl(routingControl);
     }
     
-    // Inicializa a nova rota
+    // Inicializa a nova rota, AGORA USANDO O ROUTER DO OPENROUTESERVICE
     routingControl = L.Routing.control({
+        // NOVO: Configuração para usar o OpenRouteService
+        router: L.Routing.openrouteservice({
+            // Endpoint para cálculo de rotas de carro
+            serviceUrl: 'https://api.openrouteservice.org/v2/directions/driving-car',
+            apiKey: ORS_API_KEY, // Usa a chave de API definida no topo
+            timeout: 30 * 1000 // Aumenta o tempo de espera para evitar timeouts
+        }),
+        
         waypoints: [origem, destino],
         routeWhileDragging: false,
         language: 'pt',
         showAlternatives: false,
         collapsed: false 
     }).addTo(map);
-
     // Opcional: Atualiza o painel para mostrar qual mercado foi escolhido
    // const painelRota = document.querySelector('.leaflet-routing-container');
    // if (painelRota) {
