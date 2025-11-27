@@ -1,0 +1,80 @@
+/* CABEÇALHO FIXO */
+.topo {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 120px; /* <--- Altura do cabeçalho (120px) */
+    
+    background: #39e6c2;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100; 
+}
+
+.logo {
+    width: 100px;
+    height: 100px;
+    padding: 0px;
+     border-radius: 22px;
+     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+    /* Ajuste para que a logo pareça mais centralizada verticalmente */
+    margin: 15px; 
+    
+}
+/* NOVO: Estilo para o Botão de Voltar no Topo */
+.btn-voltar-topo {
+    /* Ajustes visuais */
+    text-decoration: none;
+    color: #333;
+    font-size: 36px;
+    font-weight: bold;
+    padding: 10px;
+    
+    /* Garante que ele fique à esquerda, sobrepondo a margem da logo se necessário */
+    position: absolute; 
+    left: 10px; 
+    top: 50%;
+    transform: translateY(-50%); /* Centraliza verticalmente */
+}
+.icone-voltar {
+    width: 30px; /* Define o tamanho do ícone (ajuste conforme necessário) */
+    height: auto;
+    /* Você pode adicionar estilos como cor ou sombra se for um SVG, mas para PNG/JPG */
+    /* o design já estará na imagem. */
+}
+
+/* CORREÇÃO DO MAPA */
+#mapa {
+    /* 1. ADICIONA MARGEM SUPERIOR (para o Cabeçalho) */
+    margin-top: 120px; 
+    
+    /* 2. ADICIONA MARGEM INFERIOR (para o Rodapé) */
+    margin-bottom: 80px; 
+    
+    /* 3. REDUZ A ALTURA TOTAL (100vh) PELAS DUAS BARRAS FIXAS (120px + 80px = 200px) */
+    height: calc(100vh - 200px); 
+    
+    width: 100%;
+}
+
+/* RODAPÉ FIXO */
+.footer, .rodape {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background: #39e6c2;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+    font-size: 14px;
+}

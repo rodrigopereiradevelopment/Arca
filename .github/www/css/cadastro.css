@@ -1,0 +1,458 @@
+/* GERAL */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #ffffff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* CABEÇALHO FIXO */
+.topo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 120px;
+    background: #39e6c2;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+.logo {
+    width: 100px;
+    height: 100px;
+    padding: 0px;
+    border-radius: 22px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+    margin: 15px;
+}
+
+/* RODAPÉ FIXO */
+.footer, .rodape {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background: #39e6c2;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+    font-size: 14px;
+}
+
+/* CONTAINER CADASTRO */
+.container {
+    padding-top: 140px;
+    padding-bottom: 100px;
+    padding-left: 20px;
+    padding-right: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 600px; /* Mais largo que login para acomodar mais campos */
+}
+
+/* FORMULÁRIO */
+form {
+    width: 100%;
+    background: #39e6c2;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+}
+
+/* TÍTULO DO FORMULÁRIO */
+form h2 {
+    text-align: center;
+    color: #333;
+    margin: 0 0 30px 0;
+    font-size: 24px;
+}
+
+/* FIELDSETS */
+fieldset {
+    border: 2px solid #00BF9F;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+    background: rgba(255, 255, 255, 0.5);
+}
+
+fieldset legend {
+    font-weight: bold;
+    color: #00BF9F;
+    padding: 0 10px;
+    font-size: 16px;
+}
+
+/* LABELS */
+label {
+    font-weight: bold;
+    color: #333;
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+/* INPUT CONTAINER (para ícones) */
+.input-container {
+    position: relative;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.input-container .icon {
+    position: absolute;
+    left: 15px;
+    color: #00BF9F;
+    font-size: 18px;
+    z-index: 1;
+}
+
+/* CAMPOS DE INPUT */
+.input-field,
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"],
+input[type="date"],
+input[type="file"],
+input[type="range"],
+select {
+    width: 100%;
+    padding: 15px 15px 15px 45px; /* Espaço para o ícone */
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    margin: 0;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+    outline: none;
+    background-color: #00D5B2;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+/* INPUT SEM ÍCONE */
+.input-container:not(:has(.icon)) .input-field {
+    padding-left: 15px;
+}
+
+/* FILE INPUT */
+input[type="file"] {
+    padding: 10px;
+    background-color: #ffffff;
+}
+
+/* SELECT */
+select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2300BF9F' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    cursor: pointer;
+}
+
+/* BOTÃO TOGGLE SENHA */
+.input-container button[type="button"] {
+    position: absolute;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 0;
+    z-index: 2;
+}
+
+/* CHECKBOX GROUP */
+.checkbox-group {
+    margin: 15px 0;
+    display: flex;
+    align-items: flex-start;
+}
+
+.checkbox-group label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    font-weight: normal;
+}
+
+.checkbox-group input[type="checkbox"],
+.checkbox-group input[type="radio"] {
+    width: auto;
+    margin: 0;
+    cursor: pointer;
+    transform: scale(1.2);
+}
+
+.checkbox-group small {
+    display: block;
+    color: #666;
+    font-size: 12px;
+    margin-left: 30px;
+}
+
+/* RANGE INPUT */
+input[type="range"] {
+    width: calc(100% - 50px);
+    padding: 0;
+    background: transparent;
+    margin-right: 10px;
+}
+
+input[type="range"] + output {
+    display: inline-block;
+    width: 40px;
+    text-align: center;
+    font-weight: bold;
+    color: #00BF9F;
+}
+
+/* GRID DE FORMULÁRIO */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+/* BOTÕES */
+.button-group {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+button[type="submit"],
+button[type="reset"],
+.btn-primary,
+.btn-secondary {
+    flex: 1;
+    padding: 15px;
+    border: none;
+    border-radius: 15px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.3s;
+}
+
+button[type="submit"],
+.btn-primary {
+    background: #00BF9F;
+    color: white;
+}
+
+button[type="submit"]:hover,
+.btn-primary:hover {
+    background: #19d1ac;
+    transform: translateY(-2px);
+}
+
+button[type="reset"],
+.btn-secondary {
+    background: #ffffff;
+    color: #00BF9F;
+    border: 2px solid #00BF9F;
+}
+
+button[type="reset"]:hover,
+.btn-secondary:hover {
+    background: #f0f0f0;
+}
+
+/* LINK LOGIN */
+.login-link {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #333;
+}
+
+.login-link a {
+    color: #00BF9F;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
+}
+
+/* SMALL TEXT */
+small {
+    display: block;
+    color: #666;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+/* READONLY INPUT */
+input[readonly] {
+    background-color: #e0e0e0;
+    cursor: not-allowed;
+}
+
+/* 📱 CELULAR (até 480px) */
+@media (max-width: 480px) {
+    .topo {
+        height: 90px;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    .logo {
+        width: 70px;
+        height: 70px;
+        margin: 5px;
+    }
+
+    .footer, .rodape {
+        height: 70px;
+        font-size: 12px;
+    }
+
+    .container {
+        padding-top: 100px;
+        padding-bottom: 80px;
+        padding-left: 10px;
+        padding-right: 10px;
+        max-width: 100%;
+    }
+
+    form {
+        padding: 20px;
+        border-radius: 15px;
+    }
+
+    form h2 {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+
+    fieldset {
+        padding: 15px;
+        margin-bottom: 15px;
+    }
+
+    fieldset legend {
+        font-size: 14px;
+    }
+
+    .input-field,
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="tel"],
+    input[type="date"],
+    input[type="file"],
+    select {
+        padding: 12px 12px 12px 40px;
+        font-size: 13px;
+    }
+
+    .input-container .icon {
+        left: 12px;
+        font-size: 16px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    button[type="submit"],
+    button[type="reset"],
+    .btn-primary,
+    .btn-secondary {
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    .button-group {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+/* 📲 TABLET */
+@media (min-width: 481px) and (max-width: 768px) {
+    .topo {
+        height: 110px;
+    }
+
+    .logo {
+        width: 90px;
+        height: 90px;
+    }
+
+    .footer, .rodape {
+        height: 80px;
+    }
+
+    .container {
+        padding-top: 120px;
+        padding-bottom: 90px;
+        padding-left: 30px;
+        padding-right: 30px;
+        max-width: 550px;
+    }
+
+    form {
+        padding: 25px;
+    }
+
+    form h2 {
+        font-size: 22px;
+    }
+
+    .input-field,
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="tel"],
+    input[type="date"],
+    select {
+        padding: 14px 14px 14px 45px;
+        font-size: 15px;
+    }
+
+    button[type="submit"],
+    button[type="reset"] {
+        padding: 14px;
+        font-size: 15px;
+    }
+}
+
+/* 🖥️ DESKTOP */
+@media (min-width: 769px) {
+    .container {
+        max-width: 650px;
+    }
+
+    form {
+        padding: 35px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
