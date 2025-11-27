@@ -48,6 +48,56 @@
     /* Você pode adicionar estilos como cor ou sombra se for um SVG, mas para PNG/JPG */
     /* o design já estará na imagem. */
 }
+/* Estilo do Botão de Ação */
+.btn-acao-mapa {
+    position: absolute;
+    top: 130px; /* Abaixo do cabeçalho (120px) + um pequeno espaço */
+    right: 10px;
+    z-index: 500; /* Acima do mapa, mas abaixo do topo */
+    padding: 10px 15px;
+    background-color: #007bff; /* Cor primária */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Container da Lista Flutuante */
+#listaMercadosOpcoes {
+    position: absolute;
+    top: 175px; /* Abaixo do botão */
+    right: 10px;
+    width: 280px;
+    max-height: 70vh; /* Altura máxima para não cobrir tudo */
+    overflow-y: auto;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 500;
+    padding: 10px;
+}
+
+/* Classe para esconder a lista */
+.lista-opcoes-oculta {
+    display: none;
+}
+
+/* Estilo de cada item da lista */
+.mercado-item-lista {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.2s;
+}
+
+.mercado-item-lista:hover {
+    background-color: #f0f0f0;
+}
 
 /* CORREÇÃO DO MAPA */
 #mapa {
