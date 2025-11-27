@@ -42,6 +42,12 @@
     top: 50%;
     transform: translateY(-50%); /* Centraliza verticalmente */
 }
+.icone-voltar {
+    width: 30px; /* Define o tamanho do ícone (ajuste conforme necessário) */
+    height: auto;
+    /* Você pode adicionar estilos como cor ou sombra se for um SVG, mas para PNG/JPG */
+    /* o design já estará na imagem. */
+}
 
 /* CORREÇÃO DO MAPA */
 #mapa {
