@@ -6,47 +6,41 @@
     <title>Mapa de Rotas - Leaflet</title>
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
-
     <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.css" />
-
+    
     <link rel="stylesheet" href="../css/mapa_de_rotas.css"> 
     
-    </head>
+</head>
 <body>
 
     <div class="topo">
-       <a href="compararprecos.html" class="btn-voltar-topo">
-    <img src="../img/sair.png" alt="Voltar" class="icone-voltar"> 
-</a>
-        
+        <a href="compararprecos.html" class="btn-voltar-topo">
+            <img src="../img/sair.png" alt="Voltar" class="icone-voltar"> 
+        </a>
         <img src="../img/logo.jpeg" class="logo" alt="logo">
     </div>
 
     <div class="container-lista-mercados">
-    <button id="btnListaMercados" class="btn-acao-mapa">
-        Ver Mercados (3 Opções)
-    </button>
-    
-    <div id="listaMercadosOpcoes" class="lista-opcoes-oculta">
+        <button id="btnListaMercados" class="btn-acao-mapa">
+            Ver Mercados (3 Opções)
+        </button>
+        <div id="listaMercadosOpcoes" class="lista-opcoes-oculta">
         </div>
-</div>
-
-<div id="mapa"></div>
+    </div>
 
     <div id="mapa"></div>
 
-
-    
-     <footer class="rodape">
-    <p>&copy; 2025 ARCA - Compare preços e economize em Mogi Mirim</p>
-  </footer>
-
+    <footer class="rodape">
+        <p>&copy; 2025 ARCA - Compare preços e economize em Mogi Mirim</p>
+    </footer>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
     <script src="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.js"></script>
+
+   <script src="https://cdn.jsdelivr.net/npm/lrm-openrouteservice@1.0.1/lrm-openrouteservice.min.js"></script>
     
-    <script src="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/lrm-pt.js"></script> 
+   <script src="https://unpkg.com/leaflet-routing-machine/dist/lrm-pt-br.js"></script>
 
     <script src="../js/mapa_de_rotas.js"></script>
 
