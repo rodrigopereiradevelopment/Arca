@@ -15,14 +15,13 @@
     <img id="image" src="img/logo.png" alt="ARCA">
   </div>
   
-  <main id="main-content">
     
     <header class="cabecalho">
-      <button class="menu-btn">&#9776;</button>
+      <button class="menu-btn"aria-expanded="false" aria-controls="sideMenu">&#9776;</button>
       
       <!-- Menu lateral -->
       <div class="side-menu" id="sideMenu">
-        <button class="close-btn" id="closeMenuBtn"><img src="img/close.png" alt="Close"></button>
+        <button class="close-btn" id="closeMenuBtn" aria-label="Fechar Menu"><img src="img/close.png" alt="Close"></button>
         <div class="menu-profile">
           <img src="img/usuario.png" alt="Usuário" class="profile-icon">
           <div class="user-info">
@@ -39,20 +38,21 @@
               <span>Início</span>
             </a>
           </li>
-          <li><a href="pesquisar_produtos.html"><img src="img/lupa1.png" alt="pesquisar produtos"><span>Pesquisar Produtos</span></a></li>
-          <li><a href="mercados_proximos.html"><img src="img/mercado.png" alt="mercados proximos"><span>Mercados Proximos</span></a></li>
-          <li><a href="comparar_precos.html"><img src="img/comparar.png" alt="compara precos"><span>Comparar Preços</span></a></li>
-          <li><a href="meu_carrinho.html"><img src="img/car.png" alt="meu carrinho"><span>Meu Carrinho</span></a></li>
-          <li><a href="historico.html"><img src="img/historico.png" alt="historico"><span>Histórico</span></a></li>
-          <li><a href="configuracoes.html"><img src="img/configuracao.png" alt="configuracoes"><span>Configurações</span></a></li>
-          <li><a href="html/cadastrarmercado.html"><img src="img/cadastrarmercados.png" alt="configuracoes"><span>Cadastrar Mercado</span></a></li>
-          <li><a href="ajuda_e_suporte.html"><img src="img/ajuda.png" alt="ajuda e suporte"><span>Ajuda e Suporte</span></a></li>
+          <li><a href="pesquisar_produtos.html"><img src="img/lupa1.png" alt=""><span>Pesquisar Produtos</span></a></li>
+          <li><a href="mercados_proximos.html"><img src="img/mercado.png" alt=""><span>Mercados Proximos</span></a></li>
+          <li><a href="comparar_precos.html"><img src="img/comparar.png" alt=""><span>Comparar Preços</span></a></li>
+          <li><a href="meu_carrinho.html"><img src="img/car.png" alt=""><span>Meu Carrinho</span></a></li>
+          <li><a href="historico.html"><img src="img/historico.png" alt=""><span>Histórico</span></a></li>
+          <li><a href="configuracoes.html"><img src="img/configuracao.png" alt=""><span>Configurações</span></a></li>
+          <li><a href="html/cadastrarmercado.html"><img src="img/cadastrarmercados.png" alt=""><span>Cadastrar Mercado</span></a></li>
+          <li><a href="ajuda_e_suporte.html"><img src="img/ajuda.png" alt=""><span>Ajuda e Suporte</span></a></li>
         </ul>
         
-        <div class="menu-exit" id="logoutBtn">
-  <img src="img/sair.png" alt="sair">
+     <div class="menu-exit" id="logoutBtn" role="button" tabindex="0">
+  <img src="img/sair.png" alt=""> 
   <span>Sair</span>
 </div>
+
       </div>
       
       <div class="search-bar">
@@ -65,7 +65,8 @@
   <div id="suggestionsList"></div>
 </div>
     </header>
-    <main>
+    
+      <main id="main-content">
       
       <div class="banner-carrossel">
         <img src="img/Compare1.png" alt="Banner 1">
@@ -87,37 +88,32 @@
         
       </div>
     </main>
-    <footer>
-  <a href="ticket.html" class="footer-link">
-    <button class="footer-btn"><img src="img/ticket.png" alt="ticket" class="btn-icon"></button>
+    
+ <footer>
+  
+  <a href="ticket.html" class="footer-link footer-btn" role="button">
+      <img src="img/ticket.png" alt="Abrir Tickets" class="btn-icon">
   </a>
   
-  <a href="index.html" class="footer-link">
-    <button class="footer-btn">
-      <img src="img/home.png" alt="Ícone" class="btn-icon">
-    </button>
+  <a href="index.html" class="footer-link footer-btn" role="button">
+      <img src="img/home.png" alt="Início" class="btn-icon">
   </a>
   
+  <a href="html/carrinho.html" class="abrir-carrinho" role="button">
+    <div class="cart-btn">
+      <img src="img/car.png" alt="Ir para o Carrinho de Compras" class="btn-icon">
+    </div>
+  </a>
 
-  <a href="html/carrinho.html" class="abrir-carrinho" style="background:none; border:none; padding:0; display:inline-block;">
-  <div class="cart-btn">
-    <img src="img/car.png" alt="Carrinho" class="btn-icon" style="width:65px; height:55px;">
-  </div>
-</a>
-
-
-  
-  <a href="notificacoes.html" class="footer-link"> <button class="footer-btn"> <img src="img/notificacao.png" alt="Ícone" class="btn-icon"></button>
+  <a href="notificacoes.html" class="footer-link footer-btn" role="button"> 
+      <img src="img/notificacao.png" alt="Ver Notificações" class="btn-icon">
   </a>
   
-  <a href="html/login.html" class="footer-link"> <button class="footer-btn"><img src="img/usuario1.png" alt="Ícone" class="btn-icon" style="width: 45px; height: 45px;"></button>
+  <a href="html/login.html" class="footer-link footer-btn" role="button"> 
+      <img src="img/usuario1.png" alt="Perfil e Login" class="btn-icon">
   </a>
 </footer>
-
-  </main>
   
-
-
   
   <script src="js/script.js"></script>
 </body>
