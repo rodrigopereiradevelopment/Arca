@@ -19,6 +19,9 @@
   --sombra-forte: rgba(0, 0, 0, 0.40);
   --sombra-suave: rgba(0, 0, 0, 0.1);
   --hover-escuro: rgba(0, 0, 0, 0.07);
+  
+  /* Nova variável para a sombra do cabeçalho, para consistência */
+  --sombra-cabecalho: 0 2px 4px var(--sombra-suave);
 }
 
 Body {
@@ -34,7 +37,7 @@ Body {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: var(--cor-fundo);
+  background-color: var(--cor-fundo); /* Usando variável */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -50,22 +53,26 @@ Body {
   transition: opacity 1s ease-in-out;
 }
 
+/* Estilo antigo do header removido/migrado para .cabecalho */
 header {
-  background: #22dbcf;
+  /* Propriedades do header base, se necessário */
   display: flex;
   align-items: center;
-  padding: 8px;
+  padding: 8px; /* Será sobrescrito por .cabecalho */
 }
+
 /* Conteúdo principal */
 #main-content {
   opacity: 0;
   transition: opacity 1s ease-in;
-  padding: 100px 10px 80px;
+  /* Padding ajustado para compensar header fixo (10px padding vertical + altura) */
+  padding: 80px 10px 80px; 
 }
 
 #main-content.visible {
   opacity: 1;
 }
+
 .menu-btn {
   background: none;
   border: none;
@@ -73,18 +80,20 @@ header {
   font-size: 1.7em;
   margin-right: 9px;
 }
-/* Header fixo */
+
+/* Header fixo (Agora é o estilo principal do header) */
 .cabecalho {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 1000;
+  background: var(--cor-primaria); /* Usando variável */
   padding: 10px 16px;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-around; /* Mantido para seu layout */
   align-items: center;
-  box-shadow: var(--sombra);
+  box-shadow: var(--sombra-cabecalho); /* Usando variável de sombra suave */
 }
 
 .side-menu {
@@ -93,18 +102,20 @@ header {
   left: 0;
   height: 100vh;
   width: 60vw;
-  background-color: #00E3BD;
-  /* cor do menu na imagem */
+  background-color: var(--cor-secundaria); /* Usando variável */
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
   transform: translateX(-100%);
   transition: transform 0.3s ease;
   z-index: 999;
+  box-shadow: 2px 0 10px var(--sombra-suave); /* Sombra para destacar o menu */
+  overflow-y: auto; /* Adicionado para permitir rolagem no menu */
 }
 
 .side-menu.active {
   transform: translateX(0);
 }
+
 /* remove qualquer fundo/brilho branco do botão X */
 .close-btn {
   background: transparent;
@@ -139,32 +150,62 @@ header {
 
 
 .side-btn{
-      width: 30px;
+    width: 30px;
     height: 30px;
     display: block;
     background: transparent;
     border: none;
     outline: none;
     background-color: transparent;
-
-
 }
+
+/* Ajuste do perfil no menu */
 .menu-profile {
-  border-bottom: 1px solid #000;
+  border-bottom: 1px solid var(--cor-texto); /* Usando variável */
   padding-bottom: 15px;
   margin-bottom: 15px;
-  margin-top: 50px; /* 👈 adiciona espaço abaixo do X */
+  margin-top: 60px; /* mantém espaço abaixo do botão X */
+  
+  /* Estilos do flex */
+  display: flex; 
+  align-items: center; 
+  gap: 10px; 
+  
+  /* Configuração Sticky para rolar apenas o conteúdo abaixo */
+  position: sticky;
+  top: 0; 
+  background: var(--cor-secundaria); /* Usando variável e corrigindo o topo para 0 */
+  z-index: 1;
+}
+
+/* a imagem do usuário */
+.menu-profile img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+/* texto do nome e e-mail */
+.menu-profile strong {
+  font-size: 1.1em;
+  display: block;
+}
+
+.menu-profile .email {
+  font-size: 0.9em;
+  color: var(--texto-media); /* Usando variável */
 }
 
 
 .search-bar {
   flex: 1;
   display: flex;
-  background: var(--cor-fundo);
+  background: var(--cor-fundo); /* Usando variável */
   border-radius: 20px;
   align-items: center;
   overflow: hidden;
   max-width: 70%;
+  position: relative; /* Torne o container pai relativo */
 }
 
 .search-bar input {
@@ -177,14 +218,9 @@ header {
 .search-btn {
   border: none;
   background: none;
-  color: #22dbcf;
+  color: var(--cor-primaria); /* Usando variável */
   font-size: 1.3em;
   padding: 8px;
-}
-
-/* Torne o container pai relativo */
-.search-bar {
-    position: relative;
 }
 
 .suggestions-container {
@@ -192,9 +228,9 @@ header {
     top: 100%;
     left: 0;
     right: 0;
-    background: var(--cor-fundo);
+    background: var(--cor-fundo); /* Usando variável */
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.40);
+    box-shadow: 0 4px 12px var(--sombra-forte); /* Usando variável */
     margin-top: 5px;
     display: none;
     z-index: 1000;
@@ -218,11 +254,11 @@ header {
 
 .suggestions-header {
     padding: 10px 15px;
-    background: #f5f5f5;
-    border-bottom: 1px solid #e0e0e0;
+    background: var(--hover-claro); /* Usando variável */
+    border-bottom: 1px solid var(--borda-suave); /* Usando variável */
     font-size: 11px;
     font-weight: 600;
-    color: #666;
+    color: var(--texto-suave); /* Usando variável */
     text-transform: uppercase;
 }
 
@@ -233,8 +269,8 @@ header {
     gap: 10px;
     cursor: pointer;
     transition: background 0.2s;
-    border-bottom: 1px solid #f0f0f0;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.40);
+    border-bottom: 1px solid var(--borda-leve); /* Usando variável */
+    /* Removendo a sombra redundante que estava aqui */
 }
 
 .suggestion-item:last-child {
@@ -242,11 +278,11 @@ header {
 }
 
 .suggestion-item:hover {
-    background: #f5f5f5;
+    background: var(--hover-claro); /* Usando variável */
 }
 
 .suggestion-icon {
-    color: #999;
+    color: var(--texto-fraco); /* Usando variável */
     font-size: 16px;
 }
 
@@ -257,12 +293,12 @@ header {
 .suggestion-name {
     font-size: 14px;
     font-weight: 500;
-    color: #333;
+    color: var(--texto-media); /* Usando variável */
 }
 
 .suggestion-category {
     font-size: 11px;
-    color: #999;
+    color: var(--texto-fraco); /* Usando variável */
     margin-top: 2px;
 }
 .suggestion-img {
@@ -273,39 +309,13 @@ header {
   flex-shrink: 0;
 }
 
-.menu-profile {
-  display: flex; /* coloca imagem e texto lado a lado */
-  align-items: center; /* alinha verticalmente */
-  gap: 10px; /* espaçamento entre ícone e texto */
-  border-bottom: 1px solid #000;
-  padding-bottom: 15px;
-  margin-bottom: 15px;
-  margin-top: 60px; /* mantém espaço abaixo do botão X */
-}
-
-/* a imagem do usuário */
-.menu-profile img {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-}
-
-/* texto do nome e e-mail */
-.menu-profile strong {
-  font-size: 1.1em;
-  display: block;
-}
-
-.menu-profile .email {
-  font-size: 0.9em;
-  color: #333;
-}
-
-
 .menu-list {
   list-style: none;
   padding: 0;
   margin: 0;
+  max-height: calc(100vh - 250px); /* ajusta conforme o tamanho do perfil + sair */
+  overflow-y: auto;
+  padding-right: 5px;
 }
 
 .menu-list li {
@@ -318,13 +328,13 @@ header {
   padding: 10px 12px;
   border-radius: 8px;
   text-decoration: none;
-  color: #333;
+  color: var(--texto-media); /* Usando variável */
   transition: background 0.2s;
   font-size: 1.12em;
 }
 
 .menu-list a:hover {
-  background: rgba(0,0,0,0.07);
+  background: var(--hover-escuro); /* Usando variável */
 }
 
 .menu-list img {
@@ -340,49 +350,37 @@ header {
   font-size: 1.5em;
 }
 
-.menu-list {
-  max-height: calc(100vh - 250px); /* ajusta conforme o tamanho do perfil + sair */
-  overflow-y: auto;
-  padding-right: 5px;
-}
-
 .menu-list::-webkit-scrollbar {
   width: 6px;
 }
 .menu-list::-webkit-scrollbar-thumb {
-  background-color: #22dbcf;
+  background-color: var(--cor-primaria); /* Usando variável */
   border-radius: 10px;
-}
-
-/* Fixar o perfil e o botão sair */
-.menu-profile {
-  position: sticky;
-  top: 50px; /* abaixo do botão X */
-  background: #00E3BD;
-  z-index: 1;
 }
 
 .menu-exit {
   position: sticky;
   font-size: 1.8em;
   bottom: 0;
-  background: #00E3BD;
+  background: var(--cor-secundaria); /* Usando variável */
   padding: 15px;
-   display: flex;          /* Ativa o Flexbox */
-    align-items: center;    /* Alinha os itens verticalmente ao centro */
-    gap: 10px;              /* Adiciona um pequeno espaço entre a imagem e o texto */
+   display: flex;          
+    align-items: center;    
+    gap: 10px;              
 cursor: pointer; 
-  }
+border-top: 1px solid var(--texto-media); /* Adicionado borda superior para separar do conteúdo */
+}
 
 .main {
   min-height: 60vh;
 }
+
 /* Carrossel de banners */
 .banner-carrossel {
   display: flex;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px var(--sombra-suave); /* Usando variável */
   gap: 10px;
   padding: 10px;
 }
@@ -398,37 +396,62 @@ footer {
   bottom: 0;
   left: 0;
   width: 100%;
-  background: #22dbcf;
+  background: var(--cor-primaria); /* Usando variável */
   display: flex;
   justify-content: space-around;
   align-items: center;
   padding: 11px 0;
+  box-shadow: 0 -2px 10px var(--sombra-suave); /* Adicionando sombra no rodapé */
 }
   /* Para garantir que os links âncora não adicionem estilos visuais no rodapé */
 .footer-link {
   text-decoration: none;
 }
 
+/* Estilo do link que estava inline no HTML */
+.abrir-carrinho {
+  background: none;
+  border: none;
+  padding: 0;
+  display: inline-block;
+}
+
 .cart-btn {
-  background: var(--cor-fundo);
+  background: var(--cor-fundo); /* Usando variável */
   border-radius: 50%;
   width: 94px;
   height: 94px;
-  color: #22dbcf;
+  color: var(--cor-primaria); /* Usando variável */
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 2em;
-  border: 2px solid #22dbcf;
+  border: 2px solid var(--cor-primaria); /* Usando variável */
   margin-top: -70px;
-  box-shadow: 0 2px 10px #22dbcf33;
+  box-shadow: 0 2px 10px var(--primaria-transparente); /* Usando variável */
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease; /* Adicionado para interatividade */
 }
 
-.footer-btn {
+.cart-btn:active {
+    transform: scale(0.95); /* Efeito ao clicar */
+    box-shadow: 0 0 5px var(--primaria-transparente); 
+}
+
+/* Removido .footer-btn, pois agora você usa .footer-link.footer-btn */
+.footer-link.footer-btn {
     border: none;
     background: none;
     padding: 8px;
     cursor: pointer;
+    display: flex; /* Para centralizar ícones */
+    justify-content: center;
+    align-items: center;
+    transition: background 0.2s;
+}
+
+.footer-link.footer-btn:hover {
+  background: var(--primaria-transparente);
+  border-radius: 50%;
 }
 
 .btn-icon {
@@ -436,6 +459,19 @@ footer {
     height: 50px;
     display: block;
 }
+
+/* Tamanhos de ícones específicos movidos do HTML inline */
+.abrir-carrinho .cart-btn .btn-icon {
+  width: 65px;
+  height: 55px;
+}
+
+/* Último botão (perfil/login) */
+footer a:last-child .btn-icon {
+  width: 45px;
+  height: 45px;
+}
+
 
 /* 📱 CELULAR — até 480px */
 @media (max-width: 480px) {
@@ -512,8 +548,17 @@ footer {
     height: 38px;
   }
   
-  /* MODAL CARRINHO */
-  /* As regras do modal foram removidas aqui */
+  /* Ajuste do ícone do carrinho no celular */
+  .abrir-carrinho .cart-btn .btn-icon {
+    width: 45px;
+    height: 40px;
+  }
+
+  /* Ajuste do ícone do perfil no celular */
+  footer a:last-child .btn-icon {
+    width: 35px;
+    height: 35px;
+  }
   
 }
 /* 📲 TABLET — entre 481px e 768px */
@@ -570,6 +615,17 @@ footer {
     height: 48px;
   }
   
+  /* Ajuste do ícone do carrinho no tablet */
+  .abrir-carrinho .cart-btn .btn-icon {
+    width: 55px;
+    height: 50px;
+  }
+
+  /* Ajuste do ícone do perfil no tablet */
+  footer a:last-child .btn-icon {
+    width: 40px;
+    height: 40px;
+  }
 }
 /* 🖥️ TABLET GRANDE — 769px até 1024px */
 @media (min-width: 769px) and (max-width: 1024px) {
