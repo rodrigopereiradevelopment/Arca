@@ -57,9 +57,9 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // === SISTEMA DE BUSCA COM SUGESTÕES ===
   const suggestedProducts = [
-  { name: 'Café Tradicional 3 Corações', category: 'Alimentos', img: 'img/Produto 1.png' },
-  { name: 'Açúcar Refinado União', category: 'Alimentos', img: 'img/Produto 2.png' },
-  { name: 'Arroz Branco Prato Fino', category: 'Alimentos', img: 'img/Produto 3.png' }
+  { name: 'Café Tradicional 3 Corações', category: 'Alimentos', img: '../img/Produto 1.png' },
+  { name: 'Açúcar Refinado União', category: 'Alimentos', img: '../img/Produto 2.png' },
+  { name: 'Arroz Branco Prato Fino', category: 'Alimentos', img: '../img/Produto 3.png' }
 ];
   
   const searchInput = document.getElementById('searchInput');
