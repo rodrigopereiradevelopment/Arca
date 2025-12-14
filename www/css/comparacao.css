@@ -1,150 +1,112 @@
-Body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #fff;
+/* ---------------------------------- */
+/* VARIÁVEIS DE COR E ESTILO (Consistência ARCA) */
+/* ---------------------------------- */
+:root {
+    --cor-primaria: #00BF9F;    /* Verde principal (Botões, Destaque) */
+    --cor-secundaria: #39e6c2;  /* Verde/Ciano mais claro (Header, Fundo Menu) */
+    --cor-menu: #00E3BD;        /* Fundo do Menu Lateral */
+    --cor-fundo: #ffffff;
+    --cor-texto-escuro: #333;   /* Preto/Escuro para títulos */
+    --cor-texto-suave: #666;    /* Cinza para textos secundários */
+    --cor-texto-media: #444;    /* Variável para e-mail/textos médios */
+    --cor-borda: #ccc;          /* Borda geral */
+    --sombra-header: 0 2px 5px rgba(0, 0, 0, 0.15);
+    --sombra-card: 0 4px 8px rgba(0, 0, 0, 0.2);
+    --hover-primario: #19d1ac;  /* Hover para --cor-primaria */
 }
+
+/* ---------------------------------- */
+/* GERAL E LAYOUT PRINCIPAL */
+/* ---------------------------------- */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: var(--cor-fundo);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Header fixo (O estilo principal que define o cabeçalho) */
+.cabecalho {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1001; /* FIX: Acima do menu lateral (1000) */
+    padding: 10px 16px;
+    background: var(--cor-secundaria); 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--sombra-header);
+    box-sizing: border-box; 
+}
+
+/* FIX: Estilo antigo do header removido para evitar conflito com .cabecalho */
 header {
-  background: #22dbcf;
-  display: flex;
-  align-items: center;
-  padding: 8px;
+    display: none; /* O elemento HTML header agora usa a classe .cabecalho */
 }
-/* Conteúdo principal */
+
+/* Conteúdo principal: padding para evitar sobreposição com header e footer fixos */
 #main-content {
-  opacity: 0;
-  transition: opacity 1s ease-in;
-  padding: 100px 10px 80px;
+    flex-grow: 1; 
+    opacity: 0;
+    transition: opacity 1s ease-in;
+    padding: 100px 10px 80px; /* Topo (100px) + Rodapé Botões (80px) */
 }
 
 #main-content.visible {
-  opacity: 1;
+    opacity: 1;
 }
+
+/* ---------------------------------- */
+/* BARRA DE BUSCA E SUGESTÕES */
+/* ---------------------------------- */
 .menu-btn {
-  background: none;
-  border: none;
-  color: #000;
-  font-size: 1.7em;
-  margin-right: 9px;
-}
-/* Header fixo */
-.cabecalho {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000;
-  padding: 10px 16px;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  box-shadow: var(--sombra);
-}
-
-.side-menu {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  width: 60vw;
-  background-color: #00E3BD;
-  /* cor do menu na imagem */
-  border-top-right-radius: 15px;
-  border-bottom-right-radius: 15px;
-  transform: translateX(-100%);
-  transition: transform 0.3s ease;
-  z-index: 999;
-}
-
-.side-menu.active {
-  transform: translateX(0);
-}
-/* remove qualquer fundo/brilho branco do botão X */
-.close-btn {
-  background: transparent;
-  border: none;
-  outline: none;
-  box-shadow: none;
-  padding: 8px;
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  z-index: 1001;
-}
-
-/* a imagem dentro do botão */
-.close-btn img {
-  width: 20px;
-  height: 20px;
-  background: transparent;
-  border-radius: 50%;
-  box-shadow: none;
-  display: block;
-}
-
-/* garantir que o botão e a imagem não criem um quadrado branco */
-.close-btn,
-.close-btn img,
-.side-btn {
-  background-color: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
-}
-
-
-.side-btn{
-      width: 30px;
-    height: 30px;
-    display: block;
-    background: transparent;
+    background: none;
     border: none;
-    outline: none;
-    background-color: transparent;
-
-
+    color: var(--cor-texto-escuro); /* FIX: Usando cor existente */
+    font-size: 1.7em;
+    margin-right: 9px;
+    cursor: pointer;
 }
-.menu-profile {
-  border-bottom: 1px solid #000;
-  padding-bottom: 15px;
-  margin-bottom: 15px;
-  margin-top: 50px; /* 👈 adiciona espaço abaixo do X */
-}
-
 
 .search-bar {
-  flex: 1;
-  display: flex;
-  background: #fff;
-  border-radius: 20px;
-  align-items: center;
-  overflow: hidden;
-  max-width: 70%;
+    flex: 1;
+    display: flex;
+    background: var(--cor-fundo);
+    border-radius: 20px;
+    align-items: center;
+    overflow: hidden;
+    max-width: 70%;
+    position: relative; 
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .search-bar input {
-  border: none;
-  outline: none;
-  padding: 8px;
-  width: 100%;
+    border: none;
+    outline: none;
+    padding: 8px;
+    width: 100%;
 }
 
 .search-btn {
-  border: none;
-  background: none;
-  color: #22dbcf;
-  font-size: 1.3em;
-  padding: 8px;
+    border: none;
+    background: none;
+    color: var(--cor-primaria);
+    font-size: 1.3em;
+    padding: 8px;
+    cursor: pointer;
 }
 
-/* Torne o container pai relativo */
-.search-bar {
-    position: relative;
-}
+/* Estilos de Sugestão (Consolidados e com Variáveis) */
 .suggestions-container {
     position: absolute;
     top: 100%;
     left: 0;
     right: 0;
-    background: white;
+    background: var(--cor-fundo);
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.40);
     margin-top: 5px;
@@ -171,10 +133,10 @@ header {
 .suggestions-header {
     padding: 10px 15px;
     background: #f5f5f5;
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid var(--cor-borda); 
     font-size: 11px;
     font-weight: 600;
-    color: #666;
+    color: var(--cor-texto-suave);
     text-transform: uppercase;
 }
 
@@ -185,8 +147,8 @@ header {
     gap: 10px;
     cursor: pointer;
     transition: background 0.2s;
-    border-bottom: 1px solid #f0f0f0;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.40);
+    border-bottom: 1px solid #f0f0f0; 
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); /* Sombra mais sutil */
 }
 
 .suggestion-item:last-child {
@@ -198,7 +160,7 @@ header {
 }
 
 .suggestion-icon {
-    color: #999;
+    color: var(--cor-texto-suave);
     font-size: 16px;
 }
 
@@ -209,381 +171,397 @@ header {
 .suggestion-name {
     font-size: 14px;
     font-weight: 500;
-    color: #333;
+    color: var(--cor-texto-escuro);
 }
 
 .suggestion-category {
     font-size: 11px;
-    color: #999;
+    color: var(--cor-texto-suave);
     margin-top: 2px;
 }
+
 .suggestion-img {
-  width: 40px;
-  height: 40px;
-  object-fit: cover;
-  border-radius: 6px;
-  flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 6px;
+    flex-shrink: 0;
+}
+
+/* ---------------------------------- */
+/* MENU LATERAL (SIDE MENU) */
+/* ---------------------------------- */
+.side-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 60vw;
+    background-color: var(--cor-menu);
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    z-index: 1000; /* FIX: Garantido que esteja abaixo do cabeçalho (1001) */
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+    overflow-y: auto; /* Mantido para permitir rolagem */
+}
+
+.side-menu.active {
+    transform: translateX(0);
+}
+
+.close-btn {
+    background: transparent;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    padding: 8px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 1001; /* FIX: Acima do menu para ser clicável */
+}
+
+.close-btn img {
+    width: 20px;
+    height: 20px;
+    background: transparent;
+    border-radius: 50%;
+    box-shadow: none;
+    display: block;
+}
+
+.close-btn,
+.close-btn img,
+.side-btn {
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.side-btn{
+    width: 30px;
+    height: 30px;
+    display: block;
+    background: transparent;
+    border: none;
+    outline: none;
+    background-color: transparent;
 }
 
 .menu-profile {
-  display: flex; /* coloca imagem e texto lado a lado */
-  align-items: center; /* alinha verticalmente */
-  gap: 10px; /* espaçamento entre ícone e texto */
-  border-bottom: 1px solid #000;
-  padding-bottom: 15px;
-  margin-bottom: 15px;
-  margin-top: 60px; /* mantém espaço abaixo do botão X */
+    border-bottom: 1px solid var(--cor-texto-escuro); /* FIX: Usando variável existente */
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    margin-top: 60px;
+    
+    display: flex; 
+    align-items: center; 
+    gap: 10px; 
+    
+    position: sticky;
+    top: 0; 
+    background: var(--cor-menu); /* FIX: Usando cor correta do menu */
+    z-index: 1;
 }
 
-/* a imagem do usuário */
 .menu-profile img {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
 }
 
-/* texto do nome e e-mail */
 .menu-profile strong {
-  font-size: 1.1em;
-  display: block;
+    font-size: 1.1em;
+    display: block;
+    color: var(--cor-texto-escuro);
 }
 
 .menu-profile .email {
-  font-size: 0.9em;
-  color: #333;
+    font-size: 0.9em;
+    color: var(--cor-texto-media); /* FIX: Usando variável existente */
 }
-
 
 .menu-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.menu-list li {
-  margin: 8px 0;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 100px 0; /* Adicionado margem para o botão SAIR */
 }
 
 .menu-list a {
-  display: flex;
-  align-items: center;
-  padding: 10px 12px;
-  border-radius: 8px;
-  text-decoration: none;
-  color: #333;
-  transition: background 0.2s;
-  font-size: 1.12em;
+    display: flex;
+    align-items: center;
+    padding: 10px 12px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--cor-texto-escuro);
+    transition: background 0.2s;
+    font-size: 1.12em;
 }
 
 .menu-list a:hover {
-  background: rgba(0,0,0,0.07);
+    background: rgba(0,0,0,0.07);
 }
 
 .menu-list img {
-  width: 28px;
-  height: 28px;
-  overflow: hidden;
-  object-fit: cover;
-  border-radius: 10%;     /* arredonda as imagens */
-  margin-right: 16px;     /* espaço entre imagem e texto */
+    width: 28px;
+    height: 28px;
+    overflow: hidden;
+    object-fit: cover;
+    border-radius: 10%;
+    margin-right: 16px;
 }
 
 .menu-list span {
-  font-size: 1.5em;
-}
-
-.menu-list {
-  max-height: calc(100vh - 250px); /* ajusta conforme o tamanho do perfil + sair */
-  overflow-y: auto;
-  padding-right: 5px;
+    font-size: 1.5em;
 }
 
 .menu-list::-webkit-scrollbar {
-  width: 6px;
+    width: 6px;
 }
 .menu-list::-webkit-scrollbar-thumb {
-  background-color: #22dbcf;
-  border-radius: 10px;
-}
-
-/* Fixar o perfil e o botão sair */
-.menu-profile {
-  position: sticky;
-  top: 50px; /* abaixo do botão X */
-  background: #00E3BD;
-  z-index: 1;
+    background-color: var(--cor-secundaria);
+    border-radius: 10px;
 }
 
 .menu-exit {
-  position: sticky;
-  font-size: 1.8em;
-  bottom: 0;
-  background: #00E3BD;
-  padding: 15px;
-   display: flex;          /* Ativa o Flexbox */
-    align-items: center;    /* Alinha os itens verticalmente ao centro */
-    gap: 10px;              /* Adiciona um pequeno espaço entre a imagem e o texto */
-cursor: pointer; 
-  }
-
-.modal-carrinho {
-  position: fixed;
-  left: 0;
-  bottom: -100%;
-  width: 100%;
-  height: 90vh;              /* altura do modal */
-  background: #fff;
-  border-radius: 25px 25px 0 0;
-  box-shadow: 0 -5px 20px rgba(0,0,0,0.2);
-  transition: bottom .3s ease;
-  z-index: 1000;
-  display: flex;
-  justify-content: center;   /* centra o conteúdo interno */
+    position: sticky;
+    font-size: 1.8em;
+    bottom: 0;
+    background: var(--cor-menu);
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer; 
+    border-top: 1px solid var(--cor-texto-escuro); /* Adiciona separador */
 }
 
-.modal-carrinho.mostrar {
-  bottom: 0;
+/* ---------------------------------- */
+/* CONTEÚDO DA COMPARAÇÃO */
+/* ---------------------------------- */
+
+main {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
 }
 
-/* O conteúdo interno ocupa toda a altura disponível */
-.modal-content-carrinho {
-  box-sizing: border-box;
-  width: 100%;
-  max-width: 540px;   /* limita largura em telas grandes */
-  height: 100%;       /* crucial: para que o flex interno funcione */
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-  gap: 16px;
-}
-
-/* A lista cresce e vira scroll independente (sem afetar os botões) */
 .carrinho-lista {
-  flex: 1 1 auto;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-  padding-right: 8px; /* evita que scrollbar cubra conteúdo */
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    padding: 0 10px;
 }
 
-/* item do carrinho */
-.carrinho-item,
-.carrinho-intro,
+.carrinho-lista > span {
+    text-align: center;
+    color: var(--cor-texto-suave);
+    font-size: 0.9em;
+    font-style: italic;
+    line-height: 1.4;
+}
+
+.carrinho-intro {
+    justify-content: center;
+    text-align: center;
+    background: var(--cor-primaria);
+    color: var(--cor-fundo);
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: var(--sombra-card);
+}
+
+.carrinho-intro h1 {
+    margin: 0;
+    font-size: 1.8em;
+}
+
+.carrinho-item {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    gap: 15px;
+    border-radius: 10px;
+    box-shadow: var(--sombra-card);
+    background: var(--cor-fundo);
+}
+
+.carrinho-item img:first-child { 
+    width: 40px;
+    height: 40px;
+}
+
+.carrinho-item img:nth-child(2) { 
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    border-radius: 50%;
+}
+
+.carrinho-item span {
+    font-size: 1.4em;
+    font-weight: bold;
+    color: var(--cor-texto-escuro);
+    flex-grow: 1;
+    text-align: right;
+}
+
 .carrinho-resumo {
-  display: flex;
-  align-items: center;
-  padding: 12px;
-  gap: 12px;
-  padding-bottom: 12px;
-  border-bottom: 1px solid #ddd;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-  background: white;
-  padding-bottom: 10px; /* espaço para os botões fixos */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 15px;
+    border: 1px dashed var(--cor-primaria);
+    background: #f0fff0;
+    border-radius: 10px;
+    box-shadow: none;
+}
+
+.carrinho-resumo span {
+    font-size: 0.9em;
+    line-height: 1.4;
+    color: var(--cor-texto-suave);
 }
 
 
-/* FOOTER DOS BOTÕES — sem fixed, ocupa o final do modal */
+/* ---------------------------------- */
+/* FOOTER DE BOTÕES FIXO */
+/* ---------------------------------- */
+
 .modal-buttons {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-
-  display: flex;
-  gap: 12px;
-  justify-content: space-between;
-  align-items: center;
-
-  padding: 12px;
-  border-top: 1px solid #eee;
-  background: linear-gradient(180deg,
-    rgba(255,255,255,0.95),
-    rgba(255,255,255,1)
-  );
-
-  z-index: 999;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    gap: 12px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    border-top: 1px solid #eee;
+    background: linear-gradient(0deg,
+        rgba(255,255,255,1),
+        rgba(255,255,255,0.95)
+    );
+    z-index: 1000; /* FIX: Alterado para ser menor que o cabeçalho mas maior que o conteúdo */
+    box-sizing: border-box;
 }
 
-  /* se quiser que fiquem sempre visíveis mesmo durante scroll,
-     mantém como está porque .carrinho-lista é quem rola */
-
-
-/* botões */
+/* Botões como links */
 .btn-voltar,
 .btn-comparar,
 .btn-rota {
-  flex: 1;
-  padding: 12px;
-  border-radius: 25px;
-  border: none;
-  font-size: 16px;
-  cursor: pointer; 
-   box-shadow: 0 8px 15px rgba(0,0,0,0.4); /* Sombra mais destacada */
+    flex: 1;
+    padding: 12px;
+    border-radius: 25px;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s, transform 0.3s;
 }
 
-.btn-voltar { background: #eee; color: #333; }
-.btn-comparar { background: #00D6A0; color: #fff;}
-.btn-rota {background: chartreuse; color:#333 ; font-weight:600; }
+.btn-voltar { 
+    background: #eee; 
+    color: var(--cor-texto-escuro); 
+}
+.btn-voltar:hover {
+    background: #ddd;
+}
 
-/* pequena melhoria: sombra/elevação quando lista rola abaixo do footer */
-.carrinho-lista::-webkit-scrollbar { width: 6px; }
+.btn-comparar { 
+    background: var(--cor-primaria); 
+    color: var(--cor-fundo);
+}
+.btn-comparar:hover {
+    background: var(--hover-primario); /* Usando a variável de hover */
+}
+
+.btn-rota {
+    background: #b2ff66;
+    color: var(--cor-texto-escuro); 
+}
+.btn-rota:hover {
+    background: #a0f050;
+}
+
+
+/* ---------------------------------- */
+/* MEDIA QUERIES (Ajustes para Mobile/Tablet) */
+/* ---------------------------------- */
 
 /* 📱 CELULAR (até 480px) */
 @media (max-width: 480px) {
-  /* CABEÇALHO/HEADER */
-  .cabecalho {
-      padding: 8px 10px;
-  }
+    #main-content {
+        padding: 90px 5px 70px;
+    }
 
-  .menu-btn {
-      font-size: 1.5em; /* Ícone do menu um pouco menor */
-      margin-right: 5px;
-  }
+    .cabecalho {
+        padding: 8px 10px;
+    }
 
-  /* BARRA DE BUSCA */
-  .search-bar {
-      max-width: 65%; /* Ocupa um pouco menos de espaço no header */
-  }
+    .search-bar {
+        max-width: 70%; 
+    }
 
-  .search-bar input {
-      padding: 6px;
-  }
+    .side-menu {
+        width: 80vw;
+    }
 
-  .search-btn {
-      font-size: 1.1em;
-      padding: 6px;
-  }
+    .carrinho-item {
+        padding: 12px;
+        gap: 10px;
+    }
 
-  /* MENU LATERAL */
-  .side-menu {
-      width: 75vw; /* Menu mais estreito */
-  }
+    .carrinho-item img:first-child {
+        width: 30px;
+        height: 30px;
+    }
 
-  .close-btn img {
-      width: 18px;
-      height: 18px;
-  }
-  
-  .menu-profile {
-      margin-top: 50px;
-  }
+    .carrinho-item img:nth-child(2) {
+        width: 50px;
+        height: 50px;
+    }
 
-  .menu-profile img {
-      width: 35px;
-      height: 35px;
-  }
+    .carrinho-item span {
+        font-size: 1.2em;
+    }
 
-  .menu-profile strong {
-      font-size: 1em;
-  }
+    .modal-buttons {
+        padding: 8px 10px;
+    }
 
-  .menu-list a {
-      padding: 8px 10px;
-      font-size: 1em;
-  }
-
-  .menu-list img {
-      width: 24px;
-      height: 24px;
-      margin-right: 12px;
-  }
-  
-  .menu-exit {
-      font-size: 1.5em;
-      padding: 10px;
-  }
-
-  /* MODAL CARRINHO */
-  .modal-carrinho {
-      height: 95vh; /* Ocupa mais tela no celular */
-  }
-
-  .modal-content-carrinho {
-      padding: 15px;
-  }
-
-  /* BOTÕES DO CARRINHO */
-  .btn-voltar,
-  .btn-comparar,
-  .btn-rota {
-      padding: 10px;
-      font-size: 14px;
-      border-radius: 20px;
-  }
+    .btn-voltar,
+    .btn-comparar,
+    .btn-rota {
+        padding: 10px;
+        font-size: 14px;
+        border-radius: 20px;
+    }
 }
-
----
 
 /* 📲 TABLET (481px a 768px) */
 @media (min-width: 481px) and (max-width: 768px) {
-  /* CABEÇALHO/HEADER */
-  .cabecalho {
-      padding: 10px 20px;
-  }
+    #main-content {
+        padding: 110px 15px 90px;
+    }
+    
+    .search-bar {
+        max-width: 60%;
+    }
 
-  .menu-btn {
-      font-size: 1.6em;
-      margin-right: 8px;
-  }
-
-  /* BARRA DE BUSCA */
-  .search-bar {
-      max-width: 60%;
-  }
-
-  .search-bar input {
-      padding: 8px;
-  }
-
-  .search-btn {
-      font-size: 1.2em;
-  }
-
-  /* MENU LATERAL */
-  .side-menu {
-      width: 50vw; /* Mais largo que no celular, mais estreito que no desktop */
-  }
-  
-  .menu-profile {
-      margin-top: 60px;
-  }
-
-  .menu-list a {
-      font-size: 1.05em;
-  }
-  
-  /* MODAL CARRINHO */
-  .modal-carrinho {
-      height: 85vh; /* Altura padrão ou um pouco menos */
-  }
-
-  /* BOTÕES DO CARRINHO */
-  .btn-voltar,
-  .btn-comparar,
-  .btn-rota {
-      padding: 11px;
-      font-size: 15px;
-  }
-}
-
----
-
-/* 🖥️ TABLET GRANDE (769px a 1024px) */
-@media (min-width: 769px) and (max-width: 1024px) {
-  /* BARRA DE BUSCA */
-  .search-bar {
-      max-width: 50%; /* Ocupa menos espaço para não apertar demais no header */
-  }
-  
-  /* MENU LATERAL */
-  .side-menu {
-      width: 40vw;
-  }
-
-  /* MODAL CARRINHO */
-  .modal-carrinho {
-      height: 80vh; 
-  }
+    .side-menu {
+        width: 50vw;
+    }
+    
+    .carrinho-item img:nth-child(2) {
+        width: 70px;
+        height: 70px;
+    }
 }

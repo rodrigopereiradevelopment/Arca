@@ -1,375 +1,11 @@
-:root {
-  --cor-fundo: #fff;
-  --cor-texto: #000;
+/*
+ |--------------------------------------------------------------------------
+ | STYLE.CSS (Página Inicial/Home)
+ |--------------------------------------------------------------------------
+ | Este arquivo deve ser carregado DEPOIS do global.css.
+ */
 
-  --cor-primaria: #22dbcf;
-  --cor-secundaria: #00E3BD;
-
-  --texto-media: #333;
-  --texto-suave: #666;
-  --texto-fraco: #999;
-
-  --borda-suave: #e0e0e0;
-  --borda-leve: #f0f0f0;
-
-  --hover-claro: #f5f5f5;
-
-  --primaria-transparente: #22dbcf33;
-
-  --sombra-forte: rgba(0, 0, 0, 0.40);
-  --sombra-suave: rgba(0, 0, 0, 0.1);
-  --hover-escuro: rgba(0, 0, 0, 0.07);
-  
-  /* Nova variável para a sombra do cabeçalho, para consistência */
-  --sombra-cabecalho: 0 2px 4px var(--sombra-suave);
-}
-
-Body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: var(--cor-fundo);
-}
-
-/* Tela de introdução */
-#intro-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: var(--cor-fundo); /* Usando variável */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 2000;
-  transition: opacity 1s ease-out;
-}
-
-#intro-overlay img {
-  width: 80%;
-  max-width: 400px;
-  height: auto;
-  object-fit: contain;
-  transition: opacity 1s ease-in-out;
-}
-
-/* Estilo antigo do header removido/migrado para .cabecalho */
-header {
-  /* Propriedades do header base, se necessário */
-  display: flex;
-  align-items: center;
-  padding: 8px; /* Será sobrescrito por .cabecalho */
-}
-
-/* Conteúdo principal */
-#main-content {
-  opacity: 0;
-  transition: opacity 1s ease-in;
-  /* Padding ajustado para compensar header fixo (10px padding vertical + altura) */
-  padding: 80px 10px 80px; 
-}
-
-#main-content.visible {
-  opacity: 1;
-}
-
-.menu-btn {
-  background: none;
-  border: none;
-  color: var(--cor-texto);
-  font-size: 1.7em;
-  margin-right: 9px;
-}
-
-/* Header fixo (Agora é o estilo principal do header) */
-.cabecalho {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000;
-  background: var(--cor-primaria); /* Usando variável */
-  padding: 10px 16px;
-  display: flex;
-  justify-content: space-around; /* Mantido para seu layout */
-  align-items: center;
-  box-shadow: var(--sombra-cabecalho); /* Usando variável de sombra suave */
-}
-
-.side-menu {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  width: 60vw;
-  background-color: var(--cor-secundaria); /* Usando variável */
-  border-top-right-radius: 15px;
-  border-bottom-right-radius: 15px;
-  transform: translateX(-100%);
-  transition: transform 0.3s ease;
-  z-index: 999;
-  box-shadow: 2px 0 10px var(--sombra-suave); /* Sombra para destacar o menu */
-  overflow-y: auto; /* Adicionado para permitir rolagem no menu */
-}
-
-.side-menu.active {
-  transform: translateX(0);
-}
-
-/* remove qualquer fundo/brilho branco do botão X */
-.close-btn {
-  background: transparent;
-  border: none;
-  outline: none;
-  box-shadow: none;
-  padding: 8px;
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  z-index: 1001;
-}
-
-/* a imagem dentro do botão */
-.close-btn img {
-  width: 20px;
-  height: 20px;
-  background: transparent;
-  border-radius: 50%;
-  box-shadow: none;
-  display: block;
-}
-
-/* garantir que o botão e a imagem não criem um quadrado branco */
-.close-btn,
-.close-btn img,
-.side-btn {
-  background-color: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
-}
-
-
-.side-btn{
-    width: 30px;
-    height: 30px;
-    display: block;
-    background: transparent;
-    border: none;
-    outline: none;
-    background-color: transparent;
-}
-
-/* Ajuste do perfil no menu */
-.menu-profile {
-  border-bottom: 1px solid var(--cor-texto); /* Usando variável */
-  padding-bottom: 15px;
-  margin-bottom: 15px;
-  margin-top: 60px; /* mantém espaço abaixo do botão X */
-  
-  /* Estilos do flex */
-  display: flex; 
-  align-items: center; 
-  gap: 10px; 
-  
-  /* Configuração Sticky para rolar apenas o conteúdo abaixo */
-  position: sticky;
-  top: 0; 
-  background: var(--cor-secundaria); /* Usando variável e corrigindo o topo para 0 */
-  z-index: 1;
-}
-
-/* a imagem do usuário */
-.menu-profile img {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-}
-
-/* texto do nome e e-mail */
-.menu-profile strong {
-  font-size: 1.1em;
-  display: block;
-}
-
-.menu-profile .email {
-  font-size: 0.9em;
-  color: var(--texto-media); /* Usando variável */
-}
-
-
-.search-bar {
-  flex: 1;
-  display: flex;
-  background: var(--cor-fundo); /* Usando variável */
-  border-radius: 20px;
-  align-items: center;
-  overflow: hidden;
-  max-width: 70%;
-  position: relative; /* Torne o container pai relativo */
-}
-
-.search-bar input {
-  border: none;
-  outline: none;
-  padding: 8px;
-  width: 100%;
-}
-
-.search-btn {
-  border: none;
-  background: none;
-  color: var(--cor-primaria); /* Usando variável */
-  font-size: 1.3em;
-  padding: 8px;
-}
-
-.suggestions-container {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background: var(--cor-fundo); /* Usando variável */
-    border-radius: 8px;
-    box-shadow: 0 4px 12px var(--sombra-forte); /* Usando variável */
-    margin-top: 5px;
-    display: none;
-    z-index: 1000;
-}
-
-.suggestions-container.show {
-    display: block;
-    animation: slideDown 0.3s ease;
-}
-
-@keyframes slideDown {
-    from {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.suggestions-header {
-    padding: 10px 15px;
-    background: var(--hover-claro); /* Usando variável */
-    border-bottom: 1px solid var(--borda-suave); /* Usando variável */
-    font-size: 11px;
-    font-weight: 600;
-    color: var(--texto-suave); /* Usando variável */
-    text-transform: uppercase;
-}
-
-.suggestion-item {
-    padding: 12px 15px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    cursor: pointer;
-    transition: background 0.2s;
-    border-bottom: 1px solid var(--borda-leve); /* Usando variável */
-    /* Removendo a sombra redundante que estava aqui */
-}
-
-.suggestion-item:last-child {
-    border-bottom: none;
-}
-
-.suggestion-item:hover {
-    background: var(--hover-claro); /* Usando variável */
-}
-
-.suggestion-icon {
-    color: var(--texto-fraco); /* Usando variável */
-    font-size: 16px;
-}
-
-.suggestion-content {
-    flex: 1;
-}
-
-.suggestion-name {
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--texto-media); /* Usando variável */
-}
-
-.suggestion-category {
-    font-size: 11px;
-    color: var(--texto-fraco); /* Usando variável */
-    margin-top: 2px;
-}
-.suggestion-img {
-  width: 40px;
-  height: 40px;
-  object-fit: cover;
-  border-radius: 6px;
-  flex-shrink: 0;
-}
-
-.menu-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  max-height: calc(100vh - 250px); /* ajusta conforme o tamanho do perfil + sair */
-  overflow-y: auto;
-  padding-right: 5px;
-}
-
-.menu-list li {
-  margin: 8px 0;
-}
-
-.menu-list a {
-  display: flex;
-  align-items: center;
-  padding: 10px 12px;
-  border-radius: 8px;
-  text-decoration: none;
-  color: var(--texto-media); /* Usando variável */
-  transition: background 0.2s;
-  font-size: 1.12em;
-}
-
-.menu-list a:hover {
-  background: var(--hover-escuro); /* Usando variável */
-}
-
-.menu-list img {
-  width: 28px;
-  height: 28px;
-  overflow: hidden;
-  object-fit: cover;
-  border-radius: 10%;     /* arredonda as imagens */
-  margin-right: 16px;     /* espaço entre imagem e texto */
-}
-
-.menu-list span {
-  font-size: 1.5em;
-}
-
-.menu-list::-webkit-scrollbar {
-  width: 6px;
-}
-.menu-list::-webkit-scrollbar-thumb {
-  background-color: var(--cor-primaria); /* Usando variável */
-  border-radius: 10px;
-}
-
-.menu-exit {
-  position: sticky;
-  font-size: 1.8em;
-  bottom: 0;
-  background: var(--cor-secundaria); /* Usando variável */
-  padding: 15px;
-   display: flex;          
-    align-items: center;    
-    gap: 10px;              
-cursor: pointer; 
-border-top: 1px solid var(--texto-media); /* Adicionado borda superior para separar do conteúdo */
-}
+/* Estilos remanescentes que não são globais */
 
 .main {
   min-height: 60vh;
@@ -437,7 +73,6 @@ footer {
     box-shadow: 0 0 5px var(--primaria-transparente); 
 }
 
-/* Removido .footer-btn, pois agora você usa .footer-link.footer-btn */
 .footer-link.footer-btn {
     border: none;
     background: none;
@@ -473,66 +108,19 @@ footer a:last-child .btn-icon {
 }
 
 
+/* ---------------------------------- */
+/* MEDIA QUERIES (Exclusivas da Home) */
+/* ---------------------------------- */
+
 /* 📱 CELULAR — até 480px */
 @media (max-width: 480px) {
   
-  header,
-  .cabecalho {
-    padding: 6px 10px;
-  }
-  
-  .menu-btn {
-    font-size: 1.4em;
-  }
-  
-  .search-bar {
-    max-width: 65%;
-    border-radius: 15px;
-  }
-  
-  .search-bar input {
-    padding: 6px;
-    font-size: 14px;
-  }
-  
-  /* MENU LATERAL */
-  .side-menu {
-    width: 75vw;
-  }
-  
-  .menu-profile {
-    margin-top: 50px;
-  }
-  
-  .menu-profile img {
-    width: 35px;
-    height: 35px;
-  }
-  
-  .menu-profile strong {
-    font-size: 1em;
-  }
-  
-  .menu-profile .email {
-    font-size: 0.85em;
-  }
-  
-  .menu-list a {
-    padding: 10px 8px;
-    font-size: 1em;
-  }
-  
-  .menu-list img {
-    width: 22px;
-    height: 22px;
-  }
-  
-  /* BANNERS */
+  /* RODAPÉ E BANNERS */
+
   .banner-carrossel img {
     height: 180px;
   }
   
-  /* RODAPÉ */
   footer {
     padding: 8px 0;
   }
@@ -548,13 +136,11 @@ footer a:last-child .btn-icon {
     height: 38px;
   }
   
-  /* Ajuste do ícone do carrinho no celular */
   .abrir-carrinho .cart-btn .btn-icon {
     width: 45px;
     height: 40px;
   }
 
-  /* Ajuste do ícone do perfil no celular */
   footer a:last-child .btn-icon {
     width: 35px;
     height: 35px;
@@ -564,46 +150,12 @@ footer a:last-child .btn-icon {
 /* 📲 TABLET — entre 481px e 768px */
 @media (min-width: 481px) and (max-width: 768px) {
   
-  header,
-  .cabecalho {
-    padding: 12px 18px;
-  }
-  
-  .menu-btn {
-    font-size: 1.6em;
-  }
-  
-  .search-bar {
-    max-width: 75%;
-    border-radius: 18px;
-  }
-  
-  .search-bar input {
-    padding: 10px;
-    font-size: 16px;
-  }
-  
-  /* MENU */
-  .side-menu {
-    width: 50vw;
-  }
-  
-  .menu-profile img {
-    width: 45px;
-    height: 45px;
-  }
-  
-  .menu-list a {
-    font-size: 1.15em;
-    padding: 12px 10px;
-  }
-  
-  /* BANNERS */
+  /* RODAPÉ E BANNERS */
+
   .banner-carrossel img {
     height: 230px;
   }
   
-  /* RODAPÉ */
   .cart-btn {
     width: 90px;
     height: 90px;
@@ -615,13 +167,11 @@ footer a:last-child .btn-icon {
     height: 48px;
   }
   
-  /* Ajuste do ícone do carrinho no tablet */
   .abrir-carrinho .cart-btn .btn-icon {
     width: 55px;
     height: 50px;
   }
 
-  /* Ajuste do ícone do perfil no tablet */
   footer a:last-child .btn-icon {
     width: 40px;
     height: 40px;
@@ -629,10 +179,6 @@ footer a:last-child .btn-icon {
 }
 /* 🖥️ TABLET GRANDE — 769px até 1024px */
 @media (min-width: 769px) and (max-width: 1024px) {
-
-  .side-menu {
-    width: 40vw;
-  }
 
   .banner-carrossel img {
     height: 260px;
@@ -648,5 +194,4 @@ footer a:last-child .btn-icon {
     width: 55px;
     height: 55px;
   }
-
 }
