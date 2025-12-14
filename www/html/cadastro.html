@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="pt-br">
 <head>
@@ -12,70 +11,78 @@
 <body>
   <header class="header">
     <div class="topo">
-      <img src="../img/logo.png" class="logo" alt="ARCA Logo">
+      <img src="../img/logo.png" class="logo" alt="Logotipo ARCA">
       <h1>Compare preços e economize!</h1>
     </div>
   </header>
 
   <div class="container">
-    <form action="processa_cadastro.php" method="POST" enctype="multipart/form-data">
+    <form action="processa_cadastro.php" method="POST">
       <h2>Criar Conta no ARCA</h2>
 
       <fieldset>
         <legend>Dados Básicos (Obrigatório)</legend>
 
+        <label for="nomeCompleto" class="visually-hidden">Nome Completo</label>
         <div class="input-container">
-          <i class="fa fa-user icon"></i>
+          <i class="fa fa-user icon" aria-hidden="true"></i>
           <input class="input-field" type="text" placeholder="Nome Completo" 
-                 name="nome" minlength="3" maxlength="100" required>
+                 name="nome" id="nomeCompleto" minlength="3" maxlength="100" required autocomplete="name">
         </div>
 
+        <label for="emailUsuario" class="visually-hidden">E-mail</label>
         <div class="input-container">
-          <i class="fa fa-envelope icon"></i>
-          <input class="input-field" type="email" name="email" 
-                 placeholder="Seu melhor e-mail" required>
+          <i class="fa fa-envelope icon" aria-hidden="true"></i>
+          <input class="input-field" type="email" name="email" id="emailUsuario" 
+                 placeholder="Seu melhor e-mail" required autocomplete="email">
         </div>
 
+        <label for="senhaUsuario" class="visually-hidden">Senha</label>
         <div class="input-container">
-          <i class="fa fa-lock icon"></i>
-          <input id="senha" class="input-field" type="password" name="senha" 
+          <i class="fa fa-lock icon" aria-hidden="true"></i>
+          <input id="senhaUsuario" class="input-field" type="password" name="senha" 
                  placeholder="Senha (mínimo 8 caracteres)" 
-                 minlength="8" required>
-          <button type="button" onclick="toggleSenha()">👁</button>
+                 minlength="8" required autocomplete="new-password">
+          <button type="button" aria-label="Mostrar/Ocultar Senha" 
+                  aria-controls="senhaUsuario" onclick="toggleSenha()">👁</button>
         </div>
 
+        <label for="confirmSenhaUsuario" class="visually-hidden">Confirme a Senha</label>
         <div class="input-container">
-          <i class="fa fa-lock icon"></i>
-          <input id="confirmSenha" class="input-field" type="password" 
-                 name="confirmSenha" placeholder="Confirme a Senha" required>
-          <button type="button" onclick="toggleConfirmSenha()">👁</button>
+          <i class="fa fa-lock icon" aria-hidden="true"></i>
+          <input id="confirmSenhaUsuario" class="input-field" type="password" 
+                 name="confirmSenha" placeholder="Confirme a Senha" required autocomplete="new-password">
+          <button type="button" aria-label="Mostrar/Ocultar Confirmação de Senha" 
+                  aria-controls="confirmSenhaUsuario" onclick="toggleConfirmSenha()">👁</button>
         </div>
       </fieldset>
 
       <fieldset>
         <legend>Informações Adicionais (Opcional)</legend>
 
+        <label for="cpfUsuario">CPF (opcional)</label>
         <div class="input-container">
-          <i class="fa fa-id-card icon"></i>
-          <input class="input-field" type="text" name="cpf" 
-                 placeholder="CPF (opcional)" maxlength="14">
+          <i class="fa fa-id-card icon" aria-hidden="true"></i>
+          <input class="input-field" type="text" name="cpf" id="cpfUsuario"
+                 placeholder="CPF (opcional)" maxlength="14" autocomplete="off">
         </div>
 
+        <label for="telefoneUsuario">Telefone (opcional)</label>
         <div class="input-container">
-          <i class="fa fa-phone icon"></i>
-          <input class="input-field" type="tel" name="telefone" 
-                 placeholder="Telefone (opcional)" maxlength="15">
+          <i class="fa fa-phone icon" aria-hidden="true"></i>
+          <input class="input-field" type="tel" name="telefone" id="telefoneUsuario"
+                 placeholder="Telefone (opcional)" maxlength="15" autocomplete="tel">
         </div>
 
+        <label for="cidadeUsuario">Cidade</label>
         <div class="input-container">
-          <i class="fa fa-map-marker icon"></i>
-          <input class="input-field" type="text" name="cidade" 
+          <i class="fa fa-map-marker icon" aria-hidden="true"></i>
+          <input class="input-field" type="text" name="cidade" id="cidadeUsuario"
                  placeholder="Cidade" value="Mogi Mirim" readonly>
-          <small>Atualmente disponível apenas em Mogi Mirim</small>
         </div>
-
-        <div class="input-container">
-         <!-- <i class="fa fa-camera icon"></i>-->
+        <small class="cidade-info">Atualmente disponível apenas em Mogi Mirim</small>
+        
+        <div class="input-container file-upload">
           <label for="fotoPerfil">Foto de Perfil (opcional)</label>
           <input class="input-field" type="file" id="fotoPerfil" 
                  name="fotoPerfil" accept="image/*">
@@ -86,39 +93,37 @@
         <legend>Preferências</legend>
 
         <div class="checkbox-group">
-          <label>
-            <input type="checkbox" name="notificacao_push" value="1" checked>
-            <i class="fa fa-bell"></i> Receber notificações push
+          <label for="notifPush">
+            <input type="checkbox" name="notificacao_push" id="notifPush" value="1" checked>
+            <i class="fa fa-bell" aria-hidden="true"></i> Receber notificações push
           </label>
         </div>
 
         <div class="checkbox-group">
-          <label>
-            <input type="checkbox" name="notificacao_email" value="1" checked>
-            <i class="fa fa-envelope"></i> Receber ofertas por e-mail
+          <label for="notifEmail">
+            <input type="checkbox" name="notificacao_email" id="notifEmail" value="1" checked>
+            <i class="fa fa-envelope" aria-hidden="true"></i> Receber ofertas por e-mail
           </label>
         </div>
 
         <div class="checkbox-group">
-          <label>
-            <input type="checkbox" name="notificacao_promocoes" value="1" checked>
-            <i class="fa fa-tag"></i> Receber alertas de promoções
+          <label for="notifPromocoes">
+            <input type="checkbox" name="notificacao_promocoes" id="notifPromocoes" value="1" checked>
+            <i class="fa fa-tag" aria-hidden="true"></i> Receber alertas de promoções
           </label>
         </div>
 
-        <div class="input-container">
-         <!-- <i class="fa fa-map icon"></i>-->
-          <label for="raio_busca">Raio de busca (km):</label>
+        <div class="input-container range-group">
+          <label for="raio_busca">Raio de busca (<span id="rangeValue">15</span> km):</label>
           <input type="range" id="raio_busca" name="raio_busca" 
                  min="5" max="30" value="15" 
-                 oninput="this.nextElementSibling.value = this.value">
-          <output>15</output>
+                 oninput="document.getElementById('rangeValue').innerText = this.value">
         </div>
 
         <div class="checkbox-group">
-          <label>
-            <input type="checkbox" name="modo_escuro" value="1">
-            <i class="fa fa-moon-o"></i> Modo escuro
+          <label for="modoEscuro">
+            <input type="checkbox" name="modo_escuro" id="modoEscuro" value="1">
+            <i class="fa fa-moon-o" aria-hidden="true"></i> Modo escuro
           </label>
         </div>
       </fieldset>
@@ -127,10 +132,10 @@
         <legend>Permissões</legend>
 
         <div class="checkbox-group">
-          <label>
-            <input type="checkbox" id="permitir_localizacao" 
+          <label for="permitirLocalizacao">
+            <input type="checkbox" id="permitirLocalizacao" 
                    name="permitir_localizacao" value="1">
-            <i class="fa fa-location-arrow"></i> 
+            <i class="fa fa-location-arrow" aria-hidden="true"></i> 
             Permitir acesso à minha localização
             <small>Para encontrar os supermercados mais próximos</small>
           </label>
@@ -141,7 +146,7 @@
         <legend>Termos de Uso</legend>
 
         <div class="checkbox-group">
-          <label>
+          <label for="aceiteTermos">
             <input type="checkbox" id="aceiteTermos" 
                    name="aceiteTermos" required>
             Li e aceito os 
@@ -154,10 +159,10 @@
 
       <div class="button-group">
         <button type="submit" class="btn-primary">
-          <i class="fa fa-check"></i> Criar Conta
+          <i class="fa fa-check" aria-hidden="true"></i> Criar Conta
         </button>
         <button type="reset" class="btn-secondary">
-          <i class="fa fa-refresh"></i> Limpar
+          <i class="fa fa-refresh" aria-hidden="true"></i> Limpar
         </button>
       </div>
 

@@ -1,21 +1,54 @@
+/* ---------------------------------- */
+/* VARIÁVEIS DE COR E ESTILO */
+/* ---------------------------------- */
+:root {
+    --cor-primaria: #00BF9F; /* Verde principal do tema */
+    --cor-secundaria: #39e6c2; /* Verde/Ciano mais claro (Topo/Card) */
+    --cor-fundo: #ffffff;
+    --cor-texto-escuro: #333;
+    --cor-texto-suave: #666;
+    --cor-input-fundo: #00D5B2;
+    --cor-input-readonly: #e0e0e0;
+    --cor-borda: #ccc;
+    --sombra-card: 0 8px 15px rgba(0, 0, 0, 0.2);
+    --sombra-input: 5px 5px 10px rgba(0, 0, 0, 0.5);
+    --hover-primario: #19d1ac;
+}
+
+/* ---------------------------------- */
 /* GERAL */
+/* ---------------------------------- */
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: #ffffff;
+    background: var(--cor-fundo);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
 }
 
+/* Esconder labels que são visualmente substituídos por placeholders e ícones */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+/* ---------------------------------- */
 /* CABEÇALHO FIXO */
+/* ---------------------------------- */
 .topo {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 120px;
-    background: #39e6c2;
+    background: var(--cor-secundaria);
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
     display: flex;
@@ -24,34 +57,43 @@ body {
     z-index: 100;
 }
 
+.topo h1 {
+    display: none; /* Esconde o h1 em mobile/telas pequenas */
+}
+
 .logo {
     width: 100px;
     height: 100px;
-    padding: 0px;
+    padding: 0;
     border-radius: 22px;
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+    box-shadow: var(--sombra-input);
     margin: 15px;
 }
 
+/* ---------------------------------- */
 /* RODAPÉ FIXO */
+/* ---------------------------------- */
 .footer, .rodape {
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
     height: 80px;
-    background: #39e6c2;
+    background: var(--cor-secundaria);
     z-index: 100;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #333;
+    color: var(--cor-texto-escuro);
     font-size: 14px;
 }
 
+/* ---------------------------------- */
 /* CONTAINER CADASTRO */
+/* ---------------------------------- */
 .container {
-    padding-top: 140px;
+    /* Ajustado para usar as variáveis do topo/rodapé */
+    padding-top: 140px; 
     padding-bottom: 100px;
     padding-left: 20px;
     padding-right: 20px;
@@ -61,38 +103,39 @@ body {
     flex-grow: 1;
     margin: 0 auto;
     width: 100%;
-    max-width: 600px; /* Mais largo que login para acomodar mais campos */
+    max-width: 600px; 
+    box-sizing: border-box;
 }
 
 /* FORMULÁRIO */
 form {
     width: 100%;
-    background: #39e6c2;
+    background: var(--cor-secundaria);
     padding: 30px;
     border-radius: 20px;
-    box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+    box-shadow: var(--sombra-card);
 }
 
 /* TÍTULO DO FORMULÁRIO */
 form h2 {
     text-align: center;
-    color: #333;
+    color: var(--cor-texto-escuro);
     margin: 0 0 30px 0;
     font-size: 24px;
 }
 
 /* FIELDSETS */
 fieldset {
-    border: 2px solid #00BF9F;
+    border: 2px solid var(--cor-primaria);
     border-radius: 15px;
     padding: 20px;
     margin-bottom: 20px;
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.5); /* Mantido, mas pode ser ajustado com variável se necessário */
 }
 
 fieldset legend {
     font-weight: bold;
-    color: #00BF9F;
+    color: var(--cor-primaria);
     padding: 0 10px;
     font-size: 16px;
 }
@@ -100,7 +143,7 @@ fieldset legend {
 /* LABELS */
 label {
     font-weight: bold;
-    color: #333;
+    color: var(--cor-texto-escuro);
     display: block;
     margin-bottom: 5px;
     font-size: 14px;
@@ -117,7 +160,7 @@ label {
 .input-container .icon {
     position: absolute;
     left: 15px;
-    color: #00BF9F;
+    color: var(--cor-primaria);
     font-size: 18px;
     z-index: 1;
 }
@@ -128,31 +171,33 @@ input[type="text"],
 input[type="email"],
 input[type="password"],
 input[type="tel"],
-input[type="date"],
 input[type="file"],
-input[type="range"],
 select {
     width: 100%;
-    padding: 15px 15px 15px 45px; /* Espaço para o ícone */
-    border: 1px solid #ccc;
+    padding: 15px 15px 15px 45px;
+    border: 1px solid var(--cor-borda);
     border-radius: 15px;
     margin: 0;
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+    box-shadow: var(--sombra-input);
     outline: none;
-    background-color: #00D5B2;
+    background-color: var(--cor-input-fundo);
     box-sizing: border-box;
     font-size: 14px;
+    color: var(--cor-texto-escuro);
 }
 
-/* INPUT SEM ÍCONE */
+/* INPUT SEM ÍCONE (Ajuste para campos com label explícito acima) */
 .input-container:not(:has(.icon)) .input-field {
     padding-left: 15px;
 }
 
 /* FILE INPUT */
-input[type="file"] {
+.file-upload input[type="file"] {
     padding: 10px;
-    background-color: #ffffff;
+    background-color: var(--cor-fundo);
+}
+.file-upload label {
+    margin-bottom: 5px; /* Ajuste para separar do input */
 }
 
 /* SELECT */
@@ -170,7 +215,8 @@ select {
     right: 15px;
     background: none;
     border: none;
-    font-size: 20px;
+    color: var(--cor-texto-suave); /* Cor suave para o ícone */
+    font-size: 18px;
     cursor: pointer;
     padding: 0;
     z-index: 2;
@@ -189,6 +235,7 @@ select {
     gap: 10px;
     cursor: pointer;
     font-weight: normal;
+    color: var(--cor-texto-escuro);
 }
 
 .checkbox-group input[type="checkbox"],
@@ -201,33 +248,32 @@ select {
 
 .checkbox-group small {
     display: block;
-    color: #666;
+    color: var(--cor-texto-suave);
     font-size: 12px;
     margin-left: 30px;
 }
 
 /* RANGE INPUT */
-input[type="range"] {
+.range-group {
+    /* Removendo a margem inferior padrão do input-container para ajustar o range */
+    margin-bottom: 10px; 
+    display: block; /* Garante que label e range usem o bloco completo */
+}
+
+.range-group input[type="range"] {
     width: calc(100% - 50px);
     padding: 0;
     background: transparent;
     margin-right: 10px;
+    height: 25px; /* Altura para melhor toque */
 }
 
-input[type="range"] + output {
+.range-group output {
     display: inline-block;
     width: 40px;
     text-align: center;
     font-weight: bold;
-    color: #00BF9F;
-}
-
-/* GRID DE FORMULÁRIO */
-.form-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
-    margin-bottom: 20px;
+    color: var(--cor-primaria);
 }
 
 /* BOTÕES */
@@ -257,26 +303,26 @@ button[type="reset"],
 
 button[type="submit"],
 .btn-primary {
-    background: #00BF9F;
-    color: white;
+    background: var(--cor-primaria);
+    color: var(--cor-fundo); /* Cor branca para texto */
 }
 
 button[type="submit"]:hover,
 .btn-primary:hover {
-    background: #19d1ac;
+    background: var(--hover-primario);
     transform: translateY(-2px);
 }
 
 button[type="reset"],
 .btn-secondary {
-    background: #ffffff;
-    color: #00BF9F;
-    border: 2px solid #00BF9F;
+    background: var(--cor-fundo);
+    color: var(--cor-primaria);
+    border: 2px solid var(--cor-primaria);
 }
 
 button[type="reset"]:hover,
 .btn-secondary:hover {
-    background: #f0f0f0;
+    background: var(--cor-input-readonly);
 }
 
 /* LINK LOGIN */
@@ -284,11 +330,11 @@ button[type="reset"]:hover,
     text-align: center;
     margin-top: 20px;
     font-size: 14px;
-    color: #333;
+    color: var(--cor-texto-escuro);
 }
 
 .login-link a {
-    color: #00BF9F;
+    color: var(--cor-primaria);
     font-weight: bold;
     text-decoration: none;
 }
@@ -298,18 +344,27 @@ button[type="reset"]:hover,
 }
 
 /* SMALL TEXT */
-small {
+small, .cidade-info {
     display: block;
-    color: #666;
+    color: var(--cor-texto-suave);
     font-size: 12px;
     margin-top: 5px;
+}
+.cidade-info {
+    /* Ajuste para alinhar com o campo que não tem margem inferior */
+    margin-top: -15px; 
+    margin-bottom: 20px; 
 }
 
 /* READONLY INPUT */
 input[readonly] {
-    background-color: #e0e0e0;
+    background-color: var(--cor-input-readonly);
     cursor: not-allowed;
 }
+
+/* ---------------------------------- */
+/* MEDIA QUERIES */
+/* ---------------------------------- */
 
 /* 📱 CELULAR (até 480px) */
 @media (max-width: 480px) {
@@ -317,6 +372,10 @@ input[readonly] {
         height: 90px;
         border-bottom-left-radius: 0;
         border-bottom-right-radius: 0;
+    }
+
+    .topo h1 {
+        display: none;
     }
 
     .logo {
@@ -362,7 +421,6 @@ input[readonly] {
     input[type="email"],
     input[type="password"],
     input[type="tel"],
-    input[type="date"],
     input[type="file"],
     select {
         padding: 12px 12px 12px 40px;
@@ -374,8 +432,8 @@ input[readonly] {
         font-size: 16px;
     }
 
-    .form-grid {
-        grid-template-columns: 1fr;
+    .button-group {
+        flex-direction: column;
         gap: 10px;
     }
 
@@ -386,11 +444,6 @@ input[readonly] {
         padding: 12px;
         font-size: 14px;
     }
-
-    .button-group {
-        flex-direction: column;
-        gap: 10px;
-    }
 }
 
 /* 📲 TABLET */
@@ -399,6 +452,13 @@ input[readonly] {
         height: 110px;
     }
 
+    .topo h1 {
+        display: block; /* Mostra o h1 no tablet */
+        font-size: 20px;
+        margin-left: 10px;
+        color: var(--cor-texto-escuro);
+    }
+    
     .logo {
         width: 90px;
         height: 90px;
@@ -429,7 +489,7 @@ input[readonly] {
     input[type="email"],
     input[type="password"],
     input[type="tel"],
-    input[type="date"],
+    input[type="file"],
     select {
         padding: 14px 14px 14px 45px;
         font-size: 15px;
@@ -452,7 +512,17 @@ input[readonly] {
         padding: 35px;
     }
 
-    .form-grid {
-        grid-template-columns: 1fr 1fr;
+    .topo h1 {
+        display: block;
+        font-size: 24px;
     }
+
+    /* DESKTOP: Organizar campos em duas colunas (Exemplo: CPF e Telefone) */
+    .fieldset-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+    /* Você pode aplicar a classe .fieldset-grid nas fieldsets que desejar organizar assim */
+
 }
