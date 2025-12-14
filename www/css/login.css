@@ -1,124 +1,140 @@
+/* ---------------------------------- */
+/* VARIÁVEIS DE COR E ESTILO */
+/* ---------------------------------- */
+:root {
+    --cor-primaria: #00BF9F; /* Verde principal do tema */
+    --cor-secundaria: #39e6c2; /* Verde/Ciano mais claro (Topo/Card) */
+    --cor-fundo: #ffffff;
+    --cor-texto-escuro: #333;
+    --cor-input-fundo: #00D5B2;
+    --cor-suave: #ccc;
+    --sombra-card: 0 8px 15px rgba(0, 0, 0, 0.2);
+    --sombra-input: 5px 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* ---------------------------------- */
 /* GERAL */
+/* ---------------------------------- */
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    /* Remove 'height: 100vh;' e 'overflow: hidden;' para permitir rolagem se o conteúdo for grande */
-    background: #ffffff;
+    background: var(--cor-fundo);
     min-height: 100vh;
-    display: flex; /* Usamos flexbox no body para melhor organização mobile */
+    display: flex; 
     flex-direction: column;
 }
 
+/* ---------------------------------- */
 /* CABEÇALHO FIXO */
+/* ---------------------------------- */
 .topo {
     position: fixed;
     top: 0;
     left: 0;
-
     width: 100%;
     height: 120px;
     
-    background: #39e6c2;
+    background: var(--cor-secundaria); /* Usando variável */
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
 
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 100; /* Garante que fique acima de outros elementos */
+    z-index: 100;
 }
 
 .logo {
     width: 100px;
     height: 100px;
-    padding: 0px;
-     border-radius: 22px;
-     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
-    /* Ajuste para que a logo pareça mais centralizada verticalmente */
+    padding: 0;
+    border-radius: 22px;
+    box-shadow: var(--sombra-input); /* Usando variável */
     margin: 15px; 
-    
 }
 
+/* ---------------------------------- */
 /* RODAPÉ FIXO */
-.footer, .rodape {
+/* ---------------------------------- */
+.footer {
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
     height: 80px;
-    background: #39e6c2;
+    background: var(--cor-secundaria); /* Usando variável */
     z-index: 100;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #333;
+    color: var(--cor-texto-escuro); /* Usando variável */
     font-size: 14px;
 }
 
+/* ---------------------------------- */
 /* ÁREA CENTRAL ENTRE TOPO E RODAPÉ */
+/* ---------------------------------- */
 .area-central {
-    /* Mude para padding top/bottom para considerar os elementos fixos */
-    padding-top: 130px; /* 120px do topo + 10px de margem */
-    padding-bottom: 90px; /* 80px do rodapé + 10px de margem */
+    padding-top: 130px; 
+    padding-bottom: 90px; 
     padding-left: 20px;
     padding-right: 20px;
     
-    /* Remove position: absolute e alinhamento, deixa o fluxo normal */
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centraliza o card horizontalmente */
+    align-items: center; 
     
-    flex-grow: 1; /* Permite que ocupe o espaço entre topo e rodapé */
+    flex-grow: 1; 
     
-    /* Adiciona margem top/bottom de 0 e margens laterais automáticas */
     margin: 0 auto; 
-    
-    /* Opcional: Adiciona espaçamento vertical para telas pequenas */
     justify-content: center; 
+    width: 100%; /* Garante que a área central use a largura total */
+    box-sizing: border-box;
 }
 
+/* ---------------------------------- */
 /* CARD LOGIN */
+/* ---------------------------------- */
 .card-login {
-    width: 100%; /* Ocupa a largura do padding da área central */
-    max-width: 400px; /* Limita a largura máxima para telas maiores */
+    width: 100%; 
+    max-width: 400px; 
     
-    background: #39e6c2; /* Fundo branco para contrastar com a cor do topo/rodapé */
-    padding: 30px; /* Aumenta o padding interno */
+    background: var(--cor-secundaria); /* Usando variável */
+    padding: 30px; 
     border-radius: 20px;
-    box-shadow: 0 8px 15px rgba(0,0,0,0.2); /* Sombra mais destacada */
+    box-shadow: var(--sombra-card); /* Usando variável */
     
-    /* Centraliza o card na área central verticalmente */
     align-self: center; 
 }
 
 /* TÍTULOS E LABELS */
 label {
     font-weight: bold;
-    margin-left: 0; /* Remove margem desnecessária */
-    color: #333;
-    display: block; /* Garante que ocupe sua própria linha */
+    color: var(--cor-texto-escuro); /* Usando variável */
+    display: block; 
     margin-bottom: 5px;
 }
 
 /* CAMPOS DE INPUT */
 input {
-    width: 100%; /* Garante que ocupe 100% do card, o padding já está dentro */
-    padding: 15px; /* Aumenta o padding para melhor toque */
-    border: 1px solid #ccc;
+    width: 100%; 
+    padding: 15px; 
+    border: 1px solid var(--cor-suave); /* Usando variável */
     border-radius: 15px;
-    margin: 0 0 20px 0; /* Ajusta a margem inferior */
-     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+    margin: 0 0 20px 0; 
+    box-shadow: var(--sombra-input); /* Usando variável */
     outline: none;
-    background-color: #00D5B2; /* Fundo levemente cinza */
-    box-sizing: border-box; /* Inclui padding e borda na largura total */
+    background-color: var(--cor-input-fundo); /* Usando variável */
+    box-sizing: border-box; 
+    color: var(--cor-texto-escuro);
 }
 
 /* LINK CADASTRO */
 .cadastro {
-    text-align: start; /* Alinha o link de cadastro à direita, padrão em logins */
-    margin: 10px 0 25px 0; /* Ajusta a margem para baixo e move para cima */
+    text-align: end; /* Alinhamento à direita */
+    margin: 10px 0 25px 0; 
     font-size: 15px;
-    color: #506C71; /* Usa a cor do tema para o link */
+    color: var(--cor-texto-escuro); /* Cor do tema mais escuro */
     font-weight: bold;
     text-decoration: none;
     display: block;
@@ -127,8 +143,8 @@ input {
 /* BOTÃO ENTRAR */
 .btn-entrar {
     width: 100%;
-    background: #00BF9F; /* Usa a cor primária do tema */
-    color: black; /* Cor branca para contraste */
+    background: var(--cor-primaria); /* Usando variável */
+    color: var(--cor-texto-escuro); 
     border: none;
     padding: 15px;
     border-radius: 15px;
@@ -140,47 +156,64 @@ input {
 }
 
 .btn-entrar:hover {
-    background: #19d1ac;
+    background: #19d1ac; /* Um hover sutil na cor primária */
+}
+
+/* DIVISOR SOCIAL */
+.divisor-social {
+    border: none;
+    border-top: 1px solid var(--cor-suave);
+    margin: 15px 0 25px 0;
 }
 
 /* BOTÕES SOCIAIS */
 .social-box {
     display: flex;
     justify-content: space-between;
-    gap: 15px; /* Aumenta o espaçamento */
+    gap: 15px; 
 }
 
 .btn-social {
     flex: 1;
-    padding: 15px; /* Aumenta o padding */
+    padding: 15px; 
     border: none;
     border-radius: 15px;
     display: flex;
     align-items: center;
     gap: 10px;
-    font-size: 25px;
+    font-size: 16px; /* Reduzido o tamanho da fonte para melhor proporção */
     font-weight: bold;
     justify-content: center;
     cursor: pointer;
+    transition: opacity 0.3s;
+}
+
+.btn-social:hover {
+    opacity: 0.85;
 }
 
 .facebook {
-    background: #00BF9F;
+    background: #3b5998; /* Cor original do Facebook para reconhecimento */
     color: white;
 }
 
 .google {
-    background: #00BF9F;
-    color: #ffffff;
-    border: 1px solid #ddd;
+    background: var(--cor-input-fundo); /* Usando variável do tema */
+    color: var(--cor-texto-escuro);
+    border: 1px solid var(--cor-suave);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .btn-social img {
-    width: 36px; /* Ajusta o tamanho do ícone */
+    width: 36px; 
     height: 36px;
     object-fit: contain;
 }
+
+/* ---------------------------------- */
+/* MEDIA QUERIES */
+/* ---------------------------------- */
+
 /* 📱 CELULAR (até 480px) */
 @media (max-width: 480px) {
 
@@ -213,6 +246,12 @@ input {
         max-width: 330px;
     }
 
+    /* Forçar botões sociais a ficarem um abaixo do outro em telas muito pequenas */
+    .social-box {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
     input {
         padding: 12px;
         font-size: 14px;
@@ -225,7 +264,7 @@ input {
 
     .btn-social {
         padding: 12px;
-        font-size: 18px;
+        font-size: 16px;
     }
 
     .btn-social img {
@@ -235,61 +274,20 @@ input {
 }
 /* 📲 TABLET */
 @media (min-width: 481px) and (max-width: 768px) {
-
-    .topo {
-        height: 110px;
-    }
-
-    .logo {
-        width: 90px;
-        height: 90px;
-    }
-
-    .footer {
-        height: 80px;
-    }
-
-    .area-central {
-        padding-top: 120px;
-        padding-bottom: 90px;
-        padding-left: 30px;
-        padding-right: 30px;
-    }
-
-    .card-login {
-        max-width: 450px;
-        padding: 25px;
-    }
-
-    input {
-        padding: 14px;
-        font-size: 16px;
-    }
-
-    .btn-entrar {
-        padding: 14px;
-        font-size: 17px;
-    }
-
-    .btn-social {
-        padding: 14px;
-        font-size: 20px;
-    }
-
-    .btn-social img {
-        width: 32px;
-        height: 32px;
-    }
+    /* ... (Estilos do tablet existentes, ajustados apenas para variáveis) ... */
+    .topo { height: 110px; }
+    .logo { width: 90px; height: 90px; }
+    .footer { height: 80px; }
+    .area-central { padding-top: 120px; padding-bottom: 90px; padding-left: 30px; padding-right: 30px; }
+    .card-login { max-width: 450px; padding: 25px; }
+    input { padding: 14px; font-size: 16px; }
+    .btn-entrar { padding: 14px; font-size: 17px; }
+    .btn-social { padding: 14px; font-size: 18px; }
+    .btn-social img { width: 32px; height: 32px; }
 }
 /* 🖥️ TABLET GRANDE */
 @media (min-width: 769px) and (max-width: 1024px) {
-
-    .card-login {
-        max-width: 500px;
-        padding: 28px;
-    }
-
-    .btn-social {
-        font-size: 22px;
-    }
+    /* ... (Estilos do tablet grande existentes) ... */
+    .card-login { max-width: 500px; padding: 28px; }
+    .btn-social { font-size: 18px; }
 }
