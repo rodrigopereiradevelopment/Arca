@@ -2,7 +2,7 @@
 /* VARIÁVEIS DE COR E ESTILO (Consistência ARCA) */
 /* ---------------------------------- */
 :root {
-    --cor-primaria: #00BF9F;    /* Verde principal (Botões, Destaque) */
+    --cor-primaria: #22dbcf;    /* Verde principal (Botões, Destaque) */
     --cor-secundaria: #39e6c2;  /* Verde/Ciano mais claro (Header, Fundo Menu) */
     --cor-menu: #00E3BD;        /* Fundo do Menu Lateral */
     --cor-fundo: #ffffff;
@@ -28,20 +28,6 @@ body {
 }
 
 /* Header fixo (O estilo principal que define o cabeçalho) */
-.cabecalho {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1001; /* FIX: Acima do menu lateral (1000) */
-    padding: 10px 16px;
-    background: var(--cor-secundaria); 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: var(--sombra-header);
-    box-sizing: border-box; 
-}
 
 /* FIX: Estilo antigo do header removido para evitar conflito com .cabecalho */
 header {
