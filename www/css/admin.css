@@ -206,6 +206,56 @@ body {
 }
 
 /* ---------------------------------- */
+/* ABAS DE NAVEGAÇÃO INTERNA (Produtos/Categorias) */
+/* ---------------------------------- */
+.abas-controle {
+    display: flex;
+    margin-bottom: 20px;
+    /* Linha sutil que divide as abas do conteúdo */
+    border-bottom: 2px solid var(--cor-borda); 
+}
+
+.aba-btn {
+    background: none;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--texto-suave);
+    /* Borda transparente para o efeito de ativação */
+    border-bottom: 3px solid transparent; 
+    transition: all 0.2s ease;
+}
+
+.aba-btn:hover {
+    color: var(--texto-media);
+}
+
+.aba-btn.active {
+    color: var(--cor-primaria);
+    /* Linha colorida abaixo da aba ativa */
+    border-bottom: 3px solid var(--cor-primaria); 
+    font-weight: 700;
+}
+
+.tab-content {
+    padding-top: 20px;
+}
+
+.tab-content.hidden {
+    display: none;
+}
+
+/* ---------------------------------- */
+/* Ajuste de Botão 'Novo Produto' no Painel */
+/* ---------------------------------- */
+#btnNovoProduto {
+    /* Garante que o botão Novo Produto seja visível na lista de filtros */
+    margin-left: auto; /* Empurra o botão para a direita */
+    flex-shrink: 0; /* Impede que ele encolha */
+}
+/* ---------------------------------- */
 /* STATUS NA TABELA */
 /* ---------------------------------- */
 .status-tag {
