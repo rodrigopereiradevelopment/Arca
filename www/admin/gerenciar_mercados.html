@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>ARCA - Gerenciar Mercados</title>
+   <link rel="stylesheet" href="../css/admin.css"> </head>
+<body>
+    
+    <header class="cabecalho">...</header>
+    <div class="side-menu" id="sideMenu">...</div>
+    
+    <main id="main-content">
+        <h1>🏢 Gerenciar Mercados Cadastrados</h1>
+        <p>Aprovação, edição e controle de todos os estabelecimentos registrados no sistema ARCA.</p>
+
+        <div class="painel-controle">
+            <input type="text" id="filtroBusca" placeholder="Buscar por Nome, CNPJ ou Cidade...">
+            
+            <select id="filtroStatus">
+                <option value="todos">Status: Todos</option>
+                <option value="aprovado">Aprovado</option>
+                <option value="pendente">Pendente de Aprovação</option>
+                <option value="desativado">Desativado</option>
+            </select>
+            
+            <button id="btnNovoMercado" class="btn-primary">＋ Novo Mercado Manual</button>
+        </div>
+
+        <div class="tabela-responsive">
+            <table id="tabelaMercados">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Cidade/Bairro</th>
+                        <th>Status</th>
+                        <th>Responsável</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    </tbody>
+            </table>
+        </div>
+    </main>
+    
+    <div id="modalDetalhes" class="modal">
+        <div class="modal-content">
+            <h2>Detalhes do Mercado <span id="mercadoNomeModal"></span></h2>
+            <form id="formEdicaoMercado">
+                ...
+                <button type="submit" class="btn-primary">Salvar Alterações</button>
+                <button type="button" class="btn-secondary" id="btnFecharModal">Cancelar</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="../js/auth.js"></script>
+    <script src="../js/admin.js"></script> 
+</body>
+</html>

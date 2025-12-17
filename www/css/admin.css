@@ -1,0 +1,313 @@
+/*
+ |--------------------------------------------------------------------------
+ | ADMIN.CSS (VERSÃO CORRIGIDA)
+ |--------------------------------------------------------------------------
+ | Estilos para área de administração com correções de variáveis e classes.
+ */
+
+/* ---------------------------------- */
+/* VARIÁVEIS DE COR E ESTILO */
+/* ---------------------------------- */
+:root {
+  --cor-fundo: #fff;
+  --cor-texto: #000;
+
+  --cor-primaria: #22dbcf;
+  --cor-secundaria: #00E3BD;
+
+  --texto-media: #333;
+  --texto-suave: #666;
+  --texto-fraco: #999;
+  
+  --cor-borda: #e0e0e0;
+  --cor-input-readonly: #f9f9f9;
+  --sombra-card: 0 4px 8px rgba(0, 0, 0, 0.1);
+  --sombra-cabecalho: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* ---------------------------------- */
+/* BASE / LAYOUT GERAL */
+/* ---------------------------------- */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: var(--cor-fundo);
+  color: var(--cor-texto);
+  min-height: 100vh;
+  display: flex;  
+  flex-direction: column;
+}
+
+/* ---------------------------------- */
+/* CABEÇALHO FIXO */
+/* ---------------------------------- */
+.cabecalho {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: var(--cor-primaria);
+  padding: 10px 16px; 
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  box-shadow: var(--sombra-cabecalho);
+  box-sizing: border-box; 
+}
+
+/* ---------------------------------- */
+/* MENU LATERAL */
+/* ---------------------------------- */
+.side-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 60vw;
+  background-color: var(--cor-secundaria);
+  z-index: 999;
+  transform: translateX(-100%); 
+  transition: transform 0.3s ease;
+}
+
+.side-menu.active {
+  transform: translateX(0);
+}
+
+/* ---------------------------------- */
+/* MAIN CONTENT */
+/* ---------------------------------- */
+#main-content {
+  flex-grow: 1; 
+  padding-top: 100px; /* Ajustado para cabeçalho padrão */
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 40px; 
+  opacity: 0;
+  transition: opacity 1s ease-in;
+}
+
+#main-content.visible {
+  opacity: 1;
+}
+
+#main-content h1 {
+    color: var(--cor-primaria);
+    margin-bottom: 5px;
+}
+
+#main-content p {
+    color: var(--texto-suave); /* ✅ CORRIGIDO */
+    margin-bottom: 30px;
+    font-size: 14px;
+}
+
+/* ---------------------------------- */
+/* BOTÕES */
+/* ---------------------------------- */
+.btn-primary {
+    background-color: var(--cor-primaria);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+.btn-primary:hover {
+    background-color: #1bc4b9;
+    transform: translateY(-2px);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+.btn-secondary {
+    background-color: var(--texto-suave);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.btn-secondary:hover {
+    background-color: var(--texto-media);
+}
+
+/* ---------------------------------- */
+/* PAINEL DE CONTROLE */
+/* ---------------------------------- */
+.painel-controle {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 25px;
+    padding: 15px;
+    background: var(--cor-input-readonly);
+    border-radius: 10px;
+}
+
+.painel-controle input[type="text"],
+.painel-controle select {
+    padding: 10px 15px;
+    border: 1px solid var(--cor-borda);
+    border-radius: 8px;
+    box-sizing: border-box;
+    flex-grow: 1;
+    min-width: 180px;
+    font-size: 14px;
+}
+
+.painel-controle .btn-primary {
+    padding: 10px 15px;
+    font-size: 14px;
+    align-self: center;
+}
+
+/* ---------------------------------- */
+/* TABELA DE DADOS */
+/* ---------------------------------- */
+.tabela-responsive {
+    overflow-x: auto;
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+#tabelaMercados {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px;
+}
+
+#tabelaMercados thead {
+    background-color: var(--cor-primaria);
+    color: white;
+}
+
+#tabelaMercados th,
+#tabelaMercados td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid var(--cor-borda);
+    font-size: 14px;
+}
+
+#tabelaMercados tbody tr:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+}
+
+/* ---------------------------------- */
+/* STATUS NA TABELA */
+/* ---------------------------------- */
+.status-tag {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.status-aprovado {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.status-pendente {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.status-desativado {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+/* ---------------------------------- */
+/* ÍCONES DE AÇÃO */
+/* ---------------------------------- */
+.acoes-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    margin-right: 10px;
+    transition: color 0.2s;
+}
+
+.acoes-btn:hover {
+    color: var(--cor-primaria);
+}
+
+.acoes-btn.delete:hover {
+    color: #ff0000;
+}
+
+/* ---------------------------------- */
+/* MODAL */
+/* ---------------------------------- */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.6);
+}
+
+.modal-content {
+    background-color: var(--cor-fundo);
+    margin: 5% auto;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: var(--sombra-card);
+    width: 90%;
+    max-width: 700px;
+}
+
+.modal-content h2 {
+    color: var(--cor-primaria);
+    margin-top: 0;
+    border-bottom: 2px solid var(--cor-borda);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+/* ---------------------------------- */
+/* MEDIA QUERIES */
+/* ---------------------------------- */
+@media (max-width: 600px) {
+    .painel-controle {
+        flex-direction: column;
+    }
+
+    .painel-controle input[type="text"],
+    .painel-controle select,
+    .painel-controle .btn-primary {
+        width: 100%;
+        min-width: unset;
+    }
+    
+    .modal-content {
+        margin: 20px auto;
+        width: 95%;
+        padding: 15px;
+    }
+
+    #tabelaMercados th,
+    #tabelaMercados td {
+        padding: 10px 8px;
+        font-size: 12px;
+    }
+}
