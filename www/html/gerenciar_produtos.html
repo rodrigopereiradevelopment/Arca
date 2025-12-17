@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>ARCA - Gerenciar Produtos e Categorias</title>
+    <link rel="stylesheet" href="../css/admin.css"> 
+</head>
+<body>
+    
+    <header class="cabecalho">...</header>
+    <div class="side-menu" id="sideMenu">...</div>
+    
+    <main id="main-content">
+        <h1>📦 Gerenciar Catálogo de Produtos</h1>
+        <p>Controle e aprovação de produtos, categorias e preços associados aos supermercados.</p>
+
+        <div class="abas-controle">
+            <button class="aba-btn active" data-tab="produtos">Produtos</button>
+            <button class="aba-btn" data-tab="categorias">Categorias</button>
+            <button class="aba-btn" data-tab="precos">Preços Ativos</button>
+        </div>
+
+        <div id="tab-produtos" class="tab-content active">
+            
+            <div class="painel-controle">
+                <input type="text" id="filtroProdutoBusca" placeholder="Buscar por Nome, EAN ou ID...">
+                
+                <select id="filtroCategoria">
+                    <option value="todos">Categoria: Todas</option>
+                    </select>
+                
+                <button id="btnNovoProduto" class="btn-primary">＋ Novo Produto</button>
+            </div>
+
+            <div class="tabela-responsive">
+                <table id="tabelaProdutos">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>Categoria</th>
+                            <th>EAN</th>
+                            <th>Preços Ativos</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="tab-categorias" class="tab-content hidden">
+            <h2>Gerenciamento de Categorias</h2>
+            
+            <div class="painel-controle">
+                <input type="text" id="novaCategoriaInput" placeholder="Nome da Nova Categoria">
+                <button id="btnNovaCategoria" class="btn-primary">＋ Adicionar Categoria</button>
+            </div>
+            
+            <div class="tabela-responsive">
+                <table id="tabelaCategorias">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome da Categoria</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                         </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="tab-precos" class="tab-content hidden">
+            <h2>Preços Reportados Ativos</h2>
+            <p>Lista dos preços mais recentes reportados pelos usuários para análise.</p>
+            </div>
+        
+    </main>
+    
+    <div id="modalProdutoDetalhes" class="modal">
+        <div class="modal-content">
+            <h2>Detalhes do Produto <span id="produtoNomeModal"></span></h2>
+            <form id="formEdicaoProduto">
+                ...
+                <button type="submit" class="btn-primary">Salvar Alterações</button>
+                <button type="button" class="btn-secondary" id="btnFecharModalProduto">Cancelar</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="../js/auth.js"></script>
+    <script src="../js/moderador/produtos.js"></script> </body>
+</html>
