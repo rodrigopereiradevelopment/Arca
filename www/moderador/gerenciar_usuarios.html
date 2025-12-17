@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>ARCA - Gerenciar Usuários</title>
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+    <header class="cabecalho">
+        </header>
+
+    <main id="main-content">
+        <h1>👥 Gerenciamento de Usuários</h1>
+        <p>Visualize e controle as permissões de acesso dos utilizadores do sistema.</p>
+
+        <div class="painel-controle">
+            <input type="text" id="filtroUsuarioBusca" placeholder="Buscar por Nome ou Email...">
+            
+            <select id="filtroPerfil">
+                <option value="todos">Todos os Perfis</option>
+                <option value="admin">Administrador</option>
+                <option value="moderador">Moderador</option>
+                <option value="usuario">Utilizador Comum</option>
+            </select>
+
+            <button id="btnNovoUsuario" class="btn-primary">＋ Convidar Usuário</button>
+        </div>
+
+        <div class="tabela-responsive">
+            <table id="tabelaUsuarios">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Email</th>
+                        <th>Perfil</th>
+                        <th>Status</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    </tbody>
+            </table>
+        </div>
+    </main>
+
+    <script src="../js/auth.js"></script>
+    <script src="../js/usuarios.js"></script>
+</body>
+</html>

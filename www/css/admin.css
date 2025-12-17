@@ -102,6 +102,12 @@ body {
     margin-bottom: 30px;
     font-size: 14px;
 }
+.perfil-tag.admin { color: #e74c3c; font-weight: bold; }
+.perfil-tag.moderador { color: #f39c12; font-weight: bold; }
+.perfil-tag.usuario { color: #3498db; }
+
+.status-tag.status-suspenso { background-color: #ffcccc; color: #cc0000; }
+.status-tag.status-ativo { background-color: #d4edda; color: #155724; }
 
 /* ---------------------------------- */
 /* BOTÕES */
