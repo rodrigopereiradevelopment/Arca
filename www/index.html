@@ -118,12 +118,13 @@
   <a href="index.html" class="footer-link footer-btn" role="button">
       <img src="img/home.png" alt="Início" class="btn-icon">
   </a>
-  
-  <a href="html/carrinho.html" class="abrir-carrinho" role="button">
-    <div class="cart-btn">
-      <img src="img/car.png" alt="Ir para o Carrinho de Compras" class="btn-icon">
-    </div>
-  </a>
+
+<button class="abrir-carrinho" id="btnAbrirCarrinho" aria-label="Abrir Carrinho">
+  <div class="cart-btn">
+    <img src="img/car.png" alt="Ícone do Carrinho" class="btn-icon">
+  </div>
+</button>
+
 
   <a href="notificacoes.html" class="footer-link footer-btn" role="button"> 
       <img src="img/notificacao.png" alt="Ver Notificações" class="btn-icon">
@@ -136,6 +137,48 @@
   
   
   <script src="js/script.js"></script>
+  
+  <div id="modalCarrinho" class="modal-bottom">
+    <div class="modal-bottom-content">
+        <div class="drag-handle"></div>
+        
+        <div id="view-lista">
+            <h2 class="section-title">Minha Lista</h2>
+            <div class="carrinho-lista">
+                <div class="carrinho-item">
+                    <img src="img/Produto 1.png" alt="">
+                    <span>Café Tradicional 3 Corações</span>
+                </div>
+                <div class="carrinho-item">
+                    <img src="img/Produto 2.png" alt="">
+                    <span>Açúcar Refinado União</span>
+                </div>
+                <a href="#" class="btn-add-item">＋ adicionar item</a>
+            </div>
+            <div class="modal-buttons">
+                <button class="btn-secondary" onclick="fecharModal()">Fechar</button>
+                <button class="btn-primary" id="btnCompararAgora">Comparar Preços</button>
+            </div>
+        </div>
+
+        <div id="view-resultado" style="display: none;">
+            <h2 class="section-title">Melhores Preços</h2>
+            <div class="resultado-rank">
+                <div class="rank-item">
+                    <img src="img/ouro.png" class="rank-badge">
+                    <img src="img/BigBom Icon.png" class="mercado-img">
+                    <strong>R$ 102,24</strong>
+                </div>
+                </div>
+            <div class="modal-buttons">
+                <button class="btn-secondary" id="btnVoltarLista">Voltar</button>
+                <button class="btn-primary">Ver Rotas</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+  
 </body>
 
 </html>
