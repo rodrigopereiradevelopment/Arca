@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ==========================================
-    // LÓGICA DO MODAL (CORRIGIDA)
+    // LÓGICA DO MODAL (CARRINHO E COMPARAÇÃO)
     // ==========================================
     const modal = document.getElementById('modalCarrinho');
     const btnAbrir = document.getElementById('btnAbrirCarrinho');
@@ -65,12 +65,19 @@ document.addEventListener('DOMContentLoaded', () => {
         };
     }
 
-    // Função para fechar (usada pelo botão Fechar no HTML)
+    // BOTÃO VER ROTAS (CORRIGIDO)
+    const btnVerRotas = document.getElementById('btnVerRotas');
+    if (btnVerRotas) {
+        btnVerRotas.addEventListener('click', () => {
+            window.location.href = 'html/mapa_de_rotas.html';
+        });
+    }
+
+    // Função para fechar modal
     window.fecharModal = function() {
         if (modal) modal.style.display = 'none';
     };
 
-    // Fechar ao clicar fora do modal
     window.addEventListener('click', (e) => {
         if (e.target === modal) fecharModal();
     });
