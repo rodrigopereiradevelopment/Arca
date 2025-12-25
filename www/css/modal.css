@@ -1,0 +1,143 @@
+/* ==========================================================================
+   MODAL DE CARRINHO E COMPARAÇÃO (ESTILO ARCA)
+   ========================================================================== */
+
+/* Fundo escuro atrás do modal */
+.modal-bottom {
+    display: none;
+    position: fixed;
+    z-index: 9999; 
+    left: 0; top: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+/* Folha que sobe (Bottom Sheet) */
+.modal-bottom-content {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 90vh;
+    max-height: 92vh;
+    background: #f4f4f4; 
+    border-radius: 25px 25px 0 0;
+    /* Padding inferior apenas o suficiente para não esconder o último item atrás dos botões fixos */
+    padding: 15px 15px 80px; 
+    box-sizing: border-box;
+    overflow-y: auto;
+    animation: slideUp 0.3s ease-out;
+}
+
+
+
+/* Barra visual de arraste no topo */
+.drag-handle {
+    width: 45px; height: 5px; background: #ccc;
+    border-radius: 10px; margin: 0 auto 20px;
+}
+
+.section-title {
+    text-align: center;
+    color: var(--cor-texto-escuro);
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+}
+
+/* CARDS DOS ITENS (Igual à sua imagem) */
+.carrinho-item, .rank-item {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    margin-bottom: 15px;
+    background: #ffffff; /* Fundo branco do card */
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    gap: 15px;
+}
+
+.carrinho-item img, .mercado-img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}
+
+.carrinho-item span {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: var(--cor-texto-escuro);
+    flex: 1;
+    text-align: center; /* Centralizado conforme o print */
+}
+
+/* Botão/Link de Adicionar (Estilo Card) */
+.btn-add-item {
+    display: block;
+    background: #ffffff;
+    padding: 15px;
+    margin: 10px 0 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+    color: #0000ff; /* Azul de link */
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+/* BOTÕES OVAIS DO RODAPÉ */
+.modal-buttons {
+    position: absolute; /* Fixa em relação ao modal-bottom-content */
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #ffffff; /* Fundo branco para destacar os botões */
+    padding: 15px 20px; /* Espaçamento interno */
+    display: flex;
+    gap: 12px;
+    z-index: 99;
+    box-sizing: border-box;
+    border-top: 1px solid #ddd;
+    border-radius: 0; /* Garante que preencha os cantos embaixo */
+}
+
+
+
+.btn-voltar, .btn-primary {
+    flex: 1;
+    padding: 15px;
+    border-radius: 35px; /* Formato oval */
+    border: none;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+/* Botão Cinza */
+.btn-voltar {
+    background: #e0e0e0;
+    color: #333;
+}
+
+/* Botão Ciano Principal */
+.btn-primary {
+    background: var(--cor-primaria);
+    color: white;
+}
+
+/* Estilo para o Ranking de Preços */
+.rank-badge {
+    width: 30px !important;
+    height: 30px !important;
+}
+
+.rank-item strong {
+    margin-left: auto;
+    font-size: 1.2rem;
+    color: var(--cor-texto-escuro);
+}
+
+@keyframes slideUp {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+}
